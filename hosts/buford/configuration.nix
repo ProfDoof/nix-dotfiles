@@ -36,6 +36,8 @@ in
 
   services.blueman.enable = true;
 
+  services.xembed-sni-proxy.enable = true;
+  
   services.pipewire = {
     enable = true;
     alsa.enable = true;
