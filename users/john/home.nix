@@ -58,14 +58,14 @@
     # Work
     zoom-us
     slack
+
+    # Dev
+    dotnet-sdk
+    fsautocomplete
   ];
 
   programs.helix = {
     enable = true;
-    extraPackages = with pkgs; [
-      dotnet-sdk
-      fsautocomplete
-    ];
     settings = {
       theme = "void";
       editor = {
@@ -702,7 +702,7 @@
 
     shellAliases = {
       ll = "ls -alh";
-      update = "sudo nixos-rebuild switch";
+      update = "sudo nixos-rebuild switch --flake ~/.dotfiles/";
     };
     history = {
       size = 10000;

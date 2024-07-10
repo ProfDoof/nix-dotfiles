@@ -16,6 +16,8 @@ in
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -29,6 +31,10 @@ in
   security.rtkit.enable = true;
 
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  services.blueman.enable = true;
 
   services.pipewire = {
     enable = true;
