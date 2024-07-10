@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    # Dev
+    dotnet-sdk
+    fsautocomplete
+  ]
+  
   programs.helix = {
     enable = true;
     settings = {

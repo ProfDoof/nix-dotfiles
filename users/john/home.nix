@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./sway.nix
     ./hx.nix
   ];
   targets.genericLinux.enable = true;

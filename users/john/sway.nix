@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 {
   home.packages = [
-    # Dev
-    dotnet-sdk
-    fsautocomplete
+
   ];
+
+  programs.waybar.enable = true;
+  
   wayland.windowManager.sway = {
     enable = true;
     package = null;
