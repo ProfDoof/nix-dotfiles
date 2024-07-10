@@ -41,6 +41,7 @@
     btop
     iotop
     iftop
+    wineWowPackages.waylandFull
 
     # syscall monitory
     strace
@@ -62,6 +63,7 @@
     # Work
     zoom-us
     slack
+    openconnect
   ];
 
 
