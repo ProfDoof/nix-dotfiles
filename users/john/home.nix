@@ -42,6 +42,7 @@
     iotop
     iftop
     wineWowPackages.waylandFull
+    winetricks
 
     # syscall monitory
     strace
