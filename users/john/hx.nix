@@ -5,7 +5,7 @@
     # Dev
     dotnet-sdk
     fsautocomplete
-  ]
+  ];
   
   programs.helix = {
     enable = true;
