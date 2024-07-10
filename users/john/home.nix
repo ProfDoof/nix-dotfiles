@@ -43,6 +43,7 @@
     iftop
     wineWowPackages.waylandFull
     winetricks
+    bottles
 
     # syscall monitory
     strace
