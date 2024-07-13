@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     dotnet-sdk
     fsautocomplete
+    nil
+    nixpkgs-fmt
   ];
   
   programs.helix = {
@@ -99,6 +101,14 @@
           formatter = { 
             command = "goimports";
           };
+        }
+
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "nixpkgs-fmt";
+          }
         }
       ];
 
