@@ -4,6 +4,7 @@
   imports = [
     ./sway.nix
     ./hx.nix
+    ./3dprinting.nix
   ];
   targets.genericLinux.enable = true;
   

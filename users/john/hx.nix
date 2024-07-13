@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # Dev
     dotnet-sdk
     fsautocomplete
   ];
