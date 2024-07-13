@@ -1,7 +1,7 @@
 { config, pkgs, ...}: 
 
 {
-  home.packages = [
+  home.packages = with pkgs; [
     freecad
     orca-slicer
   ];
