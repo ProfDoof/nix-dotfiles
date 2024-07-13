@@ -62,10 +62,14 @@
     hunspellDicts.uk_UA
     hunspellDicts.th_TH
 
-    # Work
+    # Teaching Work
     zoom-us
     slack
     openconnect
+
+    # Research Work
+    zotero_7
+    zotero
   ];
 
 
