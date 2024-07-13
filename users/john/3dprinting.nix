@@ -1,8 +1,9 @@
-{ config, pkgs, ...}: 
+{ pkgs, ...}: 
 
 {
   home.packages = with pkgs; [
     freecad
     orca-slicer
+    solvespace
   ];
 }

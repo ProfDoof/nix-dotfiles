@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -145,7 +145,7 @@
         dull_void = "#1a1521";
         trick = "#b817a9";
         light_centaurii = "#c37fc0";
-        dull_twilight = "#2f1f42";
+        # dull_twilight = "#2f1f42";
       in {
         # UI Color Definitions
         "ui.background" = { 
