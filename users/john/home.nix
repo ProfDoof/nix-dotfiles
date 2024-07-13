@@ -69,7 +69,6 @@
 
     # Research Work
     zotero_7
-    zotero
   ];
 
 
