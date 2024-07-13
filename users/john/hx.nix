@@ -108,7 +108,7 @@
           auto-format = true;
           formatter = {
             command = "nixpkgs-fmt";
-          }
+          };
         }
       ];
 
