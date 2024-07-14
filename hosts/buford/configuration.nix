@@ -125,42 +125,42 @@ in
   system.nixos.tags = [ "sway" ];
 
   
-  specialisation = {
-    gnome.configuration = {
-      services.xserver.desktopManager.gnome.enable = true;
-      system.nixos.tags = [ "gnome" ];
-    };
-    pantheon.configuration = {
-      services.xserver = {
-        desktopManager.pantheon.enable = true;
-        displayManager = {
-          gdm.enable = false;
-          lightdm.enable = true;
-        };
-      };
+  # specialisation = {
+  #   gnome.configuration = {
+  #     services.xserver.desktopManager.gnome.enable = true;
+  #     system.nixos.tags = [ "gnome" ];
+  #   };
+  #   pantheon.configuration = {
+  #     services.xserver = {
+  #       desktopManager.pantheon.enable = true;
+  #       displayManager = {
+  #         gdm.enable = false;
+  #         lightdm.enable = true;
+  #       };
+  #     };
 
-      system.nixos.tags = [ "pantheon" ];
-    };
-    kde.configuration = {
-      services = {
-        xserver.displayManager.gdm.enable = false;
-        desktopManager.plasma6.enable = true;
-        displayManager.sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
-      };
-      system.nixos.tags = [ "plasma" ];
-    };
-    cosmic.configuration = {
-      services = {
-        xserver.displayManager.gdm.enable = false;
-        desktopManager.cosmic.enable = true;
-        displayManager.cosmic-greeter.enable = true;
-      };
-      system.nixos.tags = [ "cosmic" ];
-    };
-  };
+  #     system.nixos.tags = [ "pantheon" ];
+  #   };
+  #   kde.configuration = {
+  #     services = {
+  #       xserver.displayManager.gdm.enable = false;
+  #       desktopManager.plasma6.enable = true;
+  #       displayManager.sddm = {
+  #         enable = true;
+  #         wayland.enable = true;
+  #       };
+  #     };
+  #     system.nixos.tags = [ "plasma" ];
+  #   };
+  #   cosmic.configuration = {
+  #     services = {
+  #       xserver.displayManager.gdm.enable = false;
+  #       desktopManager.cosmic.enable = true;
+  #       displayManager.cosmic-greeter.enable = true;
+  #     };
+  #     system.nixos.tags = [ "cosmic" ];
+  #   };
+  # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.john = {
