@@ -7,7 +7,7 @@
     ./3dprinting.nix
   ];
   targets.genericLinux.enable = true;
-  
+
   home.username = "john";
   home.homeDirectory = "/home/john";
 
@@ -17,14 +17,14 @@
     xz
     unzip
     p7zip
-    
+
     # utils
     ripgrep
     jq
     yq-go
     eza
     fzf
-    
+
     # misc
     cowsay
     file
@@ -109,6 +109,7 @@
         { name = "zsh-users/zsh-autosuggestions"; }
       ];
     };
+    envExtra = "export XDG_DATA_HOME=\"/home/john/.local/share\"";
   };
 
   programs.alacritty = {
@@ -122,7 +123,7 @@
   programs.firefox = {
     nativeMessagingHosts = [
       pkgs.gnome-browser-connector
-      
+
     ];
     enable = true;
   };
