@@ -34,7 +34,7 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
