@@ -1,9 +1,9 @@
-{ pkgs, ...}: 
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
-    freecad
+    # freecad
     orca-slicer
-    solvespace
+    # solvespace
   ];
 }
