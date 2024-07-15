@@ -5,7 +5,7 @@
   ];
 
   programs.waybar.enable = true;
-  
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -25,6 +25,9 @@
         }
       ];
     };
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
     extraConfig = ''
       # Brightness Controls
       bindsym XF86MonBrightnessDown exec light -U 10
