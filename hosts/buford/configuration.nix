@@ -38,8 +38,6 @@ in
     enable = true;
   };
 
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];
-
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -103,6 +101,7 @@ in
   # Configure keymap in X11
   services.xserver = {
     displayManager.gdm.enable = lib.mkDefault true;
+    videoDrivers = [ "nvidia" ];
     enable = true;
     xkb = {
       layout = "us";
@@ -113,6 +112,7 @@ in
   services.gnome.gnome-keyring.enable = true;
   programs.sway = {
     enable = true;
+    extraOptions = [ "--unsupported-gpu" ];
   };
 
   programs.steam = {
