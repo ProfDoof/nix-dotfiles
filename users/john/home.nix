@@ -74,6 +74,7 @@
 
     # Fun and games
     spotify
+    cinny
   ];
 
 
