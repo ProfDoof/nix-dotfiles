@@ -9,6 +9,8 @@ let
     { device = "/dev/disk/by-uuid/${uuid}";
       options = [ "nofail" ];
     };
+
+  extraEnv = {WLR_NO_HARDWARE_CURSORS = "1"; };
 in
 {
   nix.gc = {
@@ -36,24 +38,62 @@ in
 
   hardware.graphics = {
     enable = true;
+    extraPackages = with pkgs; [
+      vulkan-validation-layers
+    ];
   };
+
+  environment.variables = extraEnv;
+  environment.sessionVariables = extraEnv;
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+    forceFullCompositionPipeline = true;
     prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };    
+      sync.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  services.logind.lidSwitchExternalPower = "ignore";
+  # systemd.tmpfiles.rules = 
+  # let
+  #   perms = "- gdm gdm -";
+  #   mkTmpfileRules = name: contents:
+  #     [ "f+ ${name} ${perms}"] ++ map (l: "w+ ${name} - - - - ${l}") (builtins.split "\n" contents);
+  # in
+  #   mkTmpfileRules "/run/gdm/.config/monitors.xml" 
+  #     ''
+  #       <monitors version="2">
+  #         <configuration>
+  #           <logicalmonitor>
+  #             <x>0</x>
+  #             <y>0</x>
+  #             <scale>2</scale>
+  #             <primary>yes</primary>
+  #             <monitor>
+  #               <monitorspec>
+  #                 <connector>eDP-1</connector>
+  #                 <vendor>unknown</vendor>
+  #                 <product>unknown</product>
+  #                 <serial>unknown</serial>
+  #               </monitorspec>
+  #               <mode>
+  #                 <width>4112</width>
+  #                 <height>2572</height>
+  #                 <rate>60</rate>
+  #               </mode>
+  #             </monitor>
+  #           </logicalmonitor>
+  #         </configuration>
+  #       </monitors>
+  #     '';
   
   services.blueman.enable = true;
 
@@ -100,12 +140,22 @@ in
 
   # Configure keymap in X11
   services.xserver = {
-    displayManager.gdm.enable = lib.mkDefault true;
+    # displayManager.gdm.enable = lib.mkDefault true;
     videoDrivers = [ "nvidia" ];
     enable = true;
     xkb = {
       layout = "us";
       variant = "";
+    };
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.sway}/bin/sway --unsupported-gpu";
+        user = "john";
+      };
     };
   };
 
@@ -186,6 +236,9 @@ in
     wireplumber
     discord
     sway-contrib.grimshot
+    glxinfo
+    vulkan-tools
+    glmark2
   ];
 
   fonts.packages = with pkgs; [

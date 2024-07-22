@@ -71,6 +71,9 @@
     # Research Work
     zotero_7
     qnotero
+
+    # Fun and games
+    spotify
   ];
 
 
