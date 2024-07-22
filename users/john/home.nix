@@ -74,7 +74,7 @@
 
     # Fun and games
     spotify
-    cinny
+    cinny-desktop
   ];
 
 
