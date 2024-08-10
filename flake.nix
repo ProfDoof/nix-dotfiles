@@ -11,6 +11,7 @@
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
