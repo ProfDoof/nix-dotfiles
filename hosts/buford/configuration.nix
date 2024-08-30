@@ -4,13 +4,14 @@
 
 { config, lib, pkgs, ... }:
 
-let 
+let
   boi = uuid:
-    { device = "/dev/disk/by-uuid/${uuid}";
+    {
+      device = "/dev/disk/by-uuid/${uuid}";
       options = [ "nofail" ];
     };
 
-  extraEnv = {WLR_NO_HARDWARE_CURSORS = "1"; };
+  extraEnv = { WLR_NO_HARDWARE_CURSORS = "1"; };
 in
 {
   nix.gc = {
@@ -21,13 +22,14 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
-  fileSystems."/bois/bigboi" = ( boi "84499ee8-a964-4b66-a22d-d26364c41813" );
-  fileSystems."/bois/fastboi" = ( boi "01d4ff88-0197-4aee-a754-300e363336c7" ); 
-  fileSystems."/bois/smallboi" = ( boi "4590f3a6-d6b2-4941-960f-1a584140876c" );
+  fileSystems."/bois/bigboi" = (boi "84499ee8-a964-4b66-a22d-d26364c41813");
+  fileSystems."/bois/fastboi" = (boi "01d4ff88-0197-4aee-a754-300e363336c7");
+  fileSystems."/bois/smallboi" = (boi "4590f3a6-d6b2-4941-960f-1a584140876c");
 
   security.polkit.enable = true;
   security.rtkit.enable = true;
@@ -35,24 +37,29 @@ in
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
+  };
 
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vulkan-validation-layers
+      libva-vdpau-driver
+      nvidia-vaapi-driver
     ];
   };
 
+  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
   environment.variables = extraEnv;
   environment.sessionVariables = extraEnv;
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     forceFullCompositionPipeline = true;
     prime = {
       sync.enable = true;
@@ -61,7 +68,45 @@ in
     };
   };
 
-  services.logind.lidSwitchExternalPower = "ignore";
+  services = {
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    logind.lidSwitchExternalPower = "ignore";
+    blueman.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    xserver = {
+      # displayManager.gdm.enable = lib.mkDefault true;
+      videoDrivers = [ "nvidia" ];
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    gnome.gnome-keyring.enable = true;
+
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
+
+    # greetd = {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.sway}/bin/sway --unsupported-gpu";
+    #       user = "john";
+    #     };
+    #   };
+    # };
+  };
   # systemd.tmpfiles.rules = 
   # let
   #   perms = "- gdm gdm -";
@@ -87,23 +132,12 @@ in
   #               <mode>
   #                 <width>4112</width>
   #                 <height>2572</height>
-  #                 <rate>60</rate>
-  #               </mode>
+  #                 <rate>60</rate> #               </mode>
   #             </monitor>
   #           </logicalmonitor>
   #         </configuration>
   #       </monitors>
   #     '';
-  
-  services.blueman.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   programs.light.enable = true;
 
   # Bootloader.
@@ -138,33 +172,12 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    # displayManager.gdm.enable = lib.mkDefault true;
-    videoDrivers = [ "nvidia" ];
-    enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   extraOptions = [ "--unsupported-gpu" ];
+  # };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.sway}/bin/sway --unsupported-gpu";
-        user = "john";
-      };
-    };
-  };
-
-  services.gnome.gnome-keyring.enable = true;
-  programs.sway = {
-    enable = true;
-    extraOptions = [ "--unsupported-gpu" ];
-  };
-
+  programs.gamemode.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -174,7 +187,7 @@ in
 
   system.nixos.tags = [ "sway" ];
 
-  
+
   # specialisation = {
   #   gnome.configuration = {
   #     services.xserver.desktopManager.gnome.enable = true;
@@ -216,7 +229,7 @@ in
   users.users.john = {
     isNormalUser = true;
     description = "John Marsden";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "scanner" "lp" ];
   };
 
   # Allow unfree packages
@@ -225,8 +238,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     nerdfonts
     grim
     slurp

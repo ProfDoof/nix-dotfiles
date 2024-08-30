@@ -72,12 +72,37 @@
     zotero_7
     qnotero
 
+    # Programming
+    (fenix.complete.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
+    rust-analyzer-nightly
+    jdt-language-server
+    lldb
+    bash-language-server
+    omnisharp-roslyn
+    netcoredbg
+    taplo
+
     # Fun and games
     spotify
-    cinny-desktop
+    # cinny-desktop
   ];
 
-
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      rust-lang.rust-analyzer-nightly
+      ms-toolsai.jupyter
+      ms-vscode.cpptools
+      redhat.java
+    ];
+  };
   programs.git = {
     enable = true;
     userName = "John Marsden";
