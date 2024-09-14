@@ -91,10 +91,13 @@ in
         layout = "us";
         variant = "";
       };
+      # displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
 
-    desktopManager.cosmic.enable = true;
+
+    # desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
 
     # greetd = {
@@ -252,6 +255,7 @@ in
     glxinfo
     vulkan-tools
     glmark2
+    linuxKernel.packages.linux_6_6.xpadneo
   ];
 
   fonts.packages = with pkgs; [
