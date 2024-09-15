@@ -2,16 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  boi = uuid:
-    {
-      device = "/dev/disk/by-uuid/${uuid}";
-      options = [ "nofail" ];
-    };
+  boi = uuid: {
+    device = "/dev/disk/by-uuid/${uuid}";
+    options = [ "nofail" ];
+  };
 
-  extraEnv = { WLR_NO_HARDWARE_CURSORS = "1"; };
+  extraEnv = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 in
 {
   nix.gc = {
@@ -20,12 +26,14 @@ in
     options = "--delete-older-than 7d";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   fileSystems."/bois/bigboi" = (boi "84499ee8-a964-4b66-a22d-d26364c41813");
   fileSystems."/bois/fastboi" = (boi "01d4ff88-0197-4aee-a754-300e363336c7");
@@ -95,7 +103,6 @@ in
       desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
-
 
     # desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
@@ -190,7 +197,6 @@ in
 
   system.nixos.tags = [ "sway" ];
 
-
   # specialisation = {
   #   gnome.configuration = {
   #     services.xserver.desktopManager.gnome.enable = true;
@@ -232,7 +238,14 @@ in
   users.users.john = {
     isNormalUser = true;
     description = "John Marsden";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "scanner" "lp" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "audio"
+      "scanner"
+      "lp"
+    ];
   };
 
   # Allow unfree packages

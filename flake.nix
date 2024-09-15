@@ -1,4 +1,5 @@
 {
+  description = "My nix dotfiles for all systems";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-cosmic = {
@@ -17,58 +18,78 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix }:
-    let
-      inherit (nixpkgs) lib;
-      system = "x86_64-linux";
-      modules = [
-        {
-          nix.settings = {
-            extra-substituters = [
-              "https://cache.nixos.org/"
-              "https://cosmic.cachix.org/"
-              "https://nixpkgs-wayland.cachix.org/"
-              "https://nix-community.cachix.org/"
-            ];
-            trusted-public-keys = [
-              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-              "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-              "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            ];
-          };
-        }
-        nixos-cosmic.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.john = import ./users/john/home.nix;
-        }
-        ({ pkgs, config, ... }: {
-          config.nixpkgs.overlays = [
-            nixpkgs-wayland.overlay
-            fenix.overlays.default
-          ];
-        })
-      ];
-      hosts = (
-        lib.filterAttrs
-          (host: type: type == "directory" && builtins.pathExists (./hosts + "/${host}/configuration.nix"))
-          (builtins.readDir ./hosts)
-      );
-    in
+  outputs =
     {
-      nixosConfigurations =
-        lib.mapAttrs
-          (host: _: lib.nixosSystem {
-            inherit system;
-            modules = modules ++ [
-              ./hosts/${host}/configuration.nix
-            ];
-          })
-          hosts;
+      self,
+      nixpkgs,
+      home-manager,
+      fenix,
+      ...
+    }@inputs:
+    (nixpkgs.lib.zipAttrsWith (name: vals: builtins.listToAttrs vals) (
+      nixpkgs.lib.mapAttrsToList
+        (
+          hostDir: _:
+          let
+            host = import ./hosts/${hostDir}/host.nix "${hostDir}" inputs;
+          in
+          {
+            "${host.configurationsKey}" = {
+              name = "${hostDir}";
+              value = (
+                host.mkSystem {
+                  system = host.system;
+                  modules = [
+                    {
+                      nix.settings = {
+                        extra-substituters = [
+                          "https://cache.nixos.org/"
+                          "https://cosmic.cachix.org/"
+                          "https://nixpkgs-wayland.cachix.org/"
+                          "https://nix-community.cachix.org/"
+                        ];
+                        trusted-public-keys = [
+                          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                          "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+                          "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+                          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                        ];
+                      };
+                    }
+                    {
+                      home-manager.useGlobalPkgs = true;
+                      home-manager.useUserPackages = true;
+                      home-manager.users.john = import ./users/john/home.nix;
+                    }
+                    (
+                      { pkgs, config, ... }:
+                      {
+                        config.nixpkgs.overlays = [
+                          fenix.overlays.default
+                        ];
+                      }
+                    )
+                  ] ++ host.modules;
+                }
+              );
+            };
+          }
+        )
+        (
+          nixpkgs.lib.filterAttrs (
+            host: type: type == "directory" && builtins.pathExists ./hosts/${host}/host.nix
+          ) (builtins.readDir ./hosts)
+        )
+    ))
+    // {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixfmt-rfc-style;
     };
+
 }

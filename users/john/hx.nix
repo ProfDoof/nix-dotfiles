@@ -76,16 +76,25 @@
 
         ruff = {
           command = "ruff-lsp";
-          config.settings.args = [ "--ignore" "E501" ];
+          config.settings.args = [
+            "--ignore"
+            "E501"
+          ];
         };
       };
       language = [
         {
           name = "fsharp";
           scope = "source.fs";
-          roots = [ "sln" "fsproj" ];
+          roots = [
+            "sln"
+            "fsproj"
+          ];
           injection-regex = "fsharp";
-          file-types = [ "fs" "fsx" ];
+          file-types = [
+            "fs"
+            "fsx"
+          ];
           comment-token = "//";
           indent = {
             tab-width = 4;
@@ -116,7 +125,10 @@
           auto-format = true;
           formatter = {
             command = "taplo";
-            args = [ "fmt" "-" ];
+            args = [
+              "fmt"
+              "-"
+            ];
           };
         }
       ];
@@ -155,8 +167,8 @@
           dull_void = "#1a1521";
           trick = "#b817a9";
           light_centaurii = "#c37fc0";
-          # dull_twilight = "#2f1f42";
         in
+        # dull_twilight = "#2f1f42";
         {
           # UI Color Definitions
           "ui.background" = {
@@ -337,7 +349,6 @@
               style = "curl";
             };
           };
-
 
           ## Need to be refined after the rest of the theme has been refined;
           "ui.statusline.normal" = {
