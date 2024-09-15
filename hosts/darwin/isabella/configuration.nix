@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 {
     environment.systemPackages = with pkgs; [
 
@@ -10,6 +10,5 @@
     services.nix-daemon.enable = true;
     nix.package = pkgs.nix;
     nixpkgs.hostPlatform = "x86_64-darwin";
-    system.configurationRevision = self.rev or self.dirtyRev or null;
     system.stateVersion = 5;
 }
