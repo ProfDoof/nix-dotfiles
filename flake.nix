@@ -17,13 +17,15 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix }:
+  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix, nix-darwin }:
     let
-      inherit (nixpkgs) lib;
-      system = "x86_64-linux";
-      modules = [
+      commonModules = [
         {
           nix.settings = {
             extra-substituters = [
@@ -40,35 +42,68 @@
             ];
           };
         }
+        ({ pkgs, config, ... }: {
+          # Allow unfree packages
+          config.nixpkgs = {
+            config.allowUnfree = true;
+            overlays = [
+              fenix.overlays.default
+            ];
+          };
+        })
+      ];
+      darwinModules = commonModules ++ [
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.john = (import ./users/john/darwin.nix {
+            homeDirectory = "/Users/john";
+          });
+          users.users.john.home = "/Users/john";
+        }
+      ];
+      nixOsModules = commonModules ++ [
         nixos-cosmic.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.john = import ./users/john/home.nix;
+          home-manager.users.john = (import ./users/john/home.nix {
+            homeDirectory = "/home/john";
+          });
         }
         ({ pkgs, config, ... }: {
           config.nixpkgs.overlays = [
             nixpkgs-wayland.overlay
-            fenix.overlays.default
           ];
         })
       ];
-      hosts = (
-        lib.filterAttrs
-          (host: type: type == "directory" && builtins.pathExists (./hosts + "/${host}/configuration.nix"))
-          (builtins.readDir ./hosts)
+      getHosts = hostType: (
+        nixpkgs.lib.filterAttrs
+          (host: type: type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix))
+          (builtins.readDir ./hosts/${hostType})
       );
     in
     {
       nixosConfigurations =
-        lib.mapAttrs
-          (host: _: lib.nixosSystem {
-            inherit system;
-            modules = modules ++ [
-              ./hosts/${host}/configuration.nix
+        nixpkgs.lib.mapAttrs
+          (host: _: nixpkgs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = nixOsModules ++ [
+              ./hosts/nixos/${host}/configuration.nix
             ];
           })
-          hosts;
+          (getHosts "nixos");
+      darwinConfigurations = 
+        nixpkgs.lib.mapAttrs
+          (host: _: nix-darwin.lib.darwinSystem {
+            system = "x86_64-darwin";
+            modules = darwinModules ++ [
+              ./hosts/darwin/${host}/configuration.nix
+            ];
+          })
+          (getHosts "darwin");
     };
 }

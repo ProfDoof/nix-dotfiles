@@ -1,3 +1,4 @@
+{ homeDirectory }:
 { config, pkgs, ... }:
 
 {
@@ -9,7 +10,7 @@
   targets.genericLinux.enable = true;
 
   home.username = "john";
-  home.homeDirectory = "/home/john";
+  home.homeDirectory = homeDirectory;
 
   home.packages = with pkgs; [
     # Archival
@@ -99,7 +100,7 @@
       ms-python.python
       rust-lang.rust-analyzer-nightly
       ms-toolsai.jupyter
-      ms-vscode.cpptools
+      # ms-vscode.cpptools
       redhat.java
     ];
   };
