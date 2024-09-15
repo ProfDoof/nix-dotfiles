@@ -19,8 +19,7 @@ in
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   imports =
     [
       # Include the results of the hardware scan.

@@ -46,6 +46,7 @@
           # Allow unfree packages
           config.nixpkgs = {
             config.allowUnfree = true;
+            settings.experimental-features = [ "nix-command" "flakes" ];
             overlays = [
               fenix.overlays.default
             ];
