@@ -3,8 +3,7 @@
 
 {
   imports = [
-    ./hx.nix
-    ./direnv.nix
+    ./dev.nix
   ];
 
   home.username = "john";
@@ -38,7 +37,7 @@
     # # productivity
     # hugo
     # glow
-    # btop
+    btop
     # iotop
     # iftop
     # wineWowPackages.waylandFull
@@ -71,47 +70,11 @@
     # zotero_7
     # qnotero
 
-    # # Programming
-    # (fenix.complete.withComponents [
-    #   "cargo"
-    #   "clippy"
-    #   "rust-src"
-    #   "rustc"
-    #   "rustfmt"
-    # ])
-    # rust-analyzer-nightly
-    # jdt-language-server
-    # lldb
-    # bash-language-server
-    # omnisharp-roslyn
-    # netcoredbg
-    # taplo
-
     # # Fun and games
     # spotify
     # # cinny-desktop
   ];
 
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      #   ms-python.python
-      #   rust-lang.rust-analyzer-nightly
-      #   ms-toolsai.jupyter
-      # ms-vscode.cpptools
-      #   redhat.java
-    ];
-  };
-  programs.git = {
-    enable = true;
-    userName = "John Marsden";
-    userEmail = "john@johnmarsden.dev";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-    };
-  };
 
   programs.java.enable = true;
 
