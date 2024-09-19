@@ -25,9 +25,13 @@
       url = "github:nix-community/talon-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix, nix-darwin, ... }:
+  outputs = { nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix, nix-darwin, mac-app-util, ... }:
     let
       commonModules = [
         {
@@ -58,11 +62,13 @@
         })
       ];
       darwinModules = commonModules ++ [
+        mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
+          home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
           home-manager.users.john = (import ./users/john/darwin.nix {
             homeDirectory = "/Users/john";
           });
