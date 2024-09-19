@@ -4,6 +4,7 @@
 {
   imports = [
     ./hx.nix
+    ./direnv.nix
   ];
 
   home.username = "john";
@@ -94,11 +95,11 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
-    #   ms-python.python
-    #   rust-lang.rust-analyzer-nightly
-    #   ms-toolsai.jupyter
+      #   ms-python.python
+      #   rust-lang.rust-analyzer-nightly
+      #   ms-toolsai.jupyter
       # ms-vscode.cpptools
-    #   redhat.java
+      #   redhat.java
     ];
   };
   programs.git = {
@@ -144,13 +145,13 @@
     };
   };
 
-#   programs.firefox = {
-#     nativeMessagingHosts = [
-#       pkgs.gnome-browser-connector
+  #   programs.firefox = {
+  #     nativeMessagingHosts = [
+  #       pkgs.gnome-browser-connector
 
-#     ];
-#     enable = true;
-#   };
+  #     ];
+  #     enable = true;
+  #   };
 
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;

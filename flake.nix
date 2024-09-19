@@ -21,9 +21,13 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    talon-nix = {
+      url = "github:nix-community/talon-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix, nix-darwin }:
+  outputs = { self, nixpkgs, nixos-cosmic, home-manager, nixpkgs-wayland, fenix, nix-darwin, ... }:
     let
       commonModules = [
         {
@@ -97,7 +101,7 @@
             ];
           })
           (getHosts "nixos");
-      darwinConfigurations = 
+      darwinConfigurations =
         nixpkgs.lib.mapAttrs
           (host: _: nix-darwin.lib.darwinSystem {
             system = "x86_64-darwin";

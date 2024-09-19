@@ -6,6 +6,7 @@
     ./sway.nix
     ./hx.nix
     ./3dprinting.nix
+    ./direnv.nix
   ];
   targets.genericLinux.enable = true;
 
