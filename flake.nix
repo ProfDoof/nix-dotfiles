@@ -63,6 +63,12 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Extended VSCode Extensions input.
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -76,6 +82,7 @@
       mac-app-util,
       flake-utils,
       treefmt-nix,
+      nix-vscode-extensions,
       ...
     }:
     let
@@ -114,6 +121,7 @@
               config.allowUnfree = true;
               overlays = [
                 fenix.overlays.default
+                nix-vscode-extensions.overlays.default
               ];
             };
           }

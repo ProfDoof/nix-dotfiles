@@ -3,13 +3,17 @@
   programs = {
     vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        ms-python.python
-        rust-lang.rust-analyzer-nightly
-        redhat.java
-        mkhl.direnv
-        jnoortheen.nix-ide
-      ];
+      mutableExtensionsDir = false;
+      extensions =
+        (with pkgs.vscode-extensions; [
+          rust-lang.rust-analyzer-nightly
+        ])
+        ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
+          ms-python.python
+          redhat.java
+          mkhl.direnv
+          jnoortheen.nix-ide
+        ]);
     };
   };
 }
