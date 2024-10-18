@@ -84,7 +84,7 @@
       treefmt-nix,
       nix-vscode-extensions,
       ...
-    }@inputs:
+    }:
     let
       # Eventually the common modules, darwin modules, and nixos modules, I think I would like broken out into their own files 
       # and then I want to somehow just add requirements to the modules to specify that they are only for NixOS or only for 
@@ -113,6 +113,19 @@
             ];
           };
         }
+        (
+          { pkgs, config, ... }:
+          {
+            # Allow unfree packages
+            config.nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [
+                fenix.overlays.default
+                nix-vscode-extensions.overlays.default
+              ];
+            };
+          }
+        )
       ];
       darwinModules = commonModules ++ [
         mac-app-util.darwinModules.default
@@ -140,6 +153,14 @@
             ./users/john/nixos.nix
           ];
         }
+        (
+          { pkgs, config, ... }:
+          {
+            config.nixpkgs.overlays = [
+              nixpkgs-wayland.overlay
+            ];
+          }
+        )
       ];
       # Ideally this will turn into a helper function for a more feature complete function. 
       getHosts =
@@ -162,7 +183,6 @@
                 ./os/nixos.nix
                 ./hosts/nixos/${host}/configuration.nix
               ];
-              specialArgs = { inherit inputs; system="x86_64-linux"; };
             }
           )
           (getHosts "nixos");
@@ -174,7 +194,6 @@
             ./os/darwin.nix
             ./hosts/darwin/${host}/configuration.nix
           ];
-          specialArgs = { inherit inputs; system="x86_64-darwin"; };
         }
       ) (getHosts "darwin");
     }

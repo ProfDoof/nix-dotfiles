@@ -1,18 +1,14 @@
-{ pkgs, inputs, system, ... }:
-let
-  inherit (inputs) fenix nix-vscode-extensions;
-  vscode-marketplace = (nix-vscode-extensions.extensions.${system}.forVSCodeVersion pkgs.vscode.version).vscode-marketplace;
-in
+{ pkgs, ... }:
 {
   programs = {
     vscode = {
       enable = true;
       mutableExtensionsDir = false;
       extensions =
-        [
-          fenix.rust-analyzer-vscode-extension
-        ]
-        ++ (with vscode-marketplace; [
+        (with pkgs.vscode-extensions; [
+          rust-lang.rust-analyzer-nightly
+        ])
+        ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
           ms-python.python
           redhat.java
           mkhl.direnv
