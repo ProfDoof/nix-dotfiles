@@ -13,6 +13,10 @@
           redhat.java
           mkhl.direnv
           jnoortheen.nix-ide
+          tomoki1207.pdf
+          sandcastle.vscode-open
+          arrterian.nix-env-selector
+          george-alisson.html-preview-vscode
         ]);
     };
   };
