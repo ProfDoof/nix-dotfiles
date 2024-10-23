@@ -28,7 +28,7 @@
     # A set of packages for rust and rust associated tooling. 
     # TODO: Should I be using an overlay on this? Is that dangerous?
     fenix = {
-      url = "github:nix-community/fenix";
+      url = "github:andresilva/fenix/fix-platforms";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

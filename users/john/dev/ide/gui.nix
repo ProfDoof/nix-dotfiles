@@ -17,6 +17,7 @@
           sandcastle.vscode-open
           arrterian.nix-env-selector
           george-alisson.html-preview-vscode
+          sissel.shopify-liquid
         ]);
     };
   };
