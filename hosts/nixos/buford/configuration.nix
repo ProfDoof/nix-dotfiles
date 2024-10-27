@@ -95,11 +95,11 @@ in
         variant = "";
       };
       # displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      # desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
 
-    # desktopManager.cosmic.enable = true;
+    desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
 
     # greetd = {
