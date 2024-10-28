@@ -261,6 +261,7 @@ in
     vulkan-tools
     glmark2
     linuxKernel.packages.linux_6_6.xpadneo
+    lutris
   ];
 
   fonts.packages = with pkgs; [
