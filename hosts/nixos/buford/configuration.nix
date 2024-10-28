@@ -263,6 +263,8 @@ in
     linuxKernel.packages.linux_6_6.xpadneo
     lutris
     protonup-qt
+    bitwarden-desktop
+    bitwarden-cli
   ];
 
   fonts.packages = with pkgs; [
