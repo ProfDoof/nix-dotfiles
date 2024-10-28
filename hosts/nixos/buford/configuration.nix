@@ -262,6 +262,7 @@ in
     glmark2
     linuxKernel.packages.linux_6_6.xpadneo
     lutris
+    protonup-qt
   ];
 
   fonts.packages = with pkgs; [
