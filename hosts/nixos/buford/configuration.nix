@@ -94,13 +94,13 @@ in
         layout = "us";
         variant = "";
       };
-      # displayManager.gdm.enable = true;
-      # desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
 
-    desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
+    # desktopManager.cosmic.enable = true;
+    # displayManager.cosmic-greeter.enable = true;
 
     # greetd = {
     #   enable = true;
