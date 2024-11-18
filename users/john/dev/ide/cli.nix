@@ -5,7 +5,6 @@
   ];
 
   home.packages = with pkgs; [
-
     # Archival
     zip
     xz

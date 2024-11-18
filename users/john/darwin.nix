@@ -11,6 +11,5 @@
   home.username = "john";
   home.homeDirectory = "/Users/john";
 
-  programs.bash.enable = true;
-  programs.zsh.shellAliases.update = "darwin-rebuild switch --flake /home/john/.dotfiles/";
+  programs.zsh.shellAliases.update = "darwin-rebuild switch --flake /Users/john/.dotfiles/";
 }
