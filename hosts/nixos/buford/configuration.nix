@@ -2,11 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 let
@@ -95,13 +94,13 @@ in
         layout = "us";
         variant = "";
       };
-      # displayManager.gdm.enable = true;
+      displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
 
     # desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
+    # displayManager.cosmic-greeter.enable = true;
 
     # greetd = {
     #   enable = true;
@@ -262,12 +261,16 @@ in
     vulkan-tools
     glmark2
     linuxKernel.packages.linux_6_6.xpadneo
+    lutris
+    protonup-qt
+    bitwarden-desktop
+    bitwarden-cli
   ];
 
   fonts.packages = with pkgs; [
     nerdfonts
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     mplus-outline-fonts.githubRelease
