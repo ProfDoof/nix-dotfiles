@@ -18,6 +18,8 @@
           arrterian.nix-env-selector
           george-alisson.html-preview-vscode
           sissel.shopify-liquid
+          pokey.cursorless
+          pokey.talon
         ]);
     };
   };

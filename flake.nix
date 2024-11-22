@@ -43,7 +43,7 @@
     # I use. In particular, I'd like for this to play nicely with crafting my own talon files but also pull down community talon
     # files. 
     talon-nix = {
-      url = "github:nix-community/talon-nix";
+      url = "github:ProfDoof/talon-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -128,6 +128,7 @@
         )
       ];
       darwinModules = commonModules ++ [
+        talon-nix.darwinModules.talon
         mac-app-util.darwinModules.default
         # I'd really like this to be a bit dryer in conjuction with the nixosModules version of this code down below. 
         # It just feels weird that I have basically the same code except for a couple of specific details. 
@@ -144,6 +145,7 @@
         }
       ];
       nixOsModules = commonModules ++ [
+        talon-nix.nixosModules.talon
         nixos-cosmic.nixosModules.default
         home-manager.nixosModules.home-manager
         {

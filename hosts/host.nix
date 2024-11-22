@@ -1,0 +1,4 @@
+{ ... }:
+{
+  programs.talon.enable = true;
+}
