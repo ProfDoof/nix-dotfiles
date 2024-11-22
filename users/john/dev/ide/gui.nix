@@ -20,6 +20,7 @@
           sissel.shopify-liquid
           pokey.cursorless
           pokey.talon
+          pokey.parse-tree
         ]);
     };
   };

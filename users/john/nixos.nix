@@ -4,7 +4,6 @@
     ./common.nix
     ./de/default.nix
     ./hobby/default.nix
-    ./ergo/default.nix
   ];
   targets.genericLinux.enable = true;
 
