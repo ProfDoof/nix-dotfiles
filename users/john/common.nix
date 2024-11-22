@@ -2,6 +2,7 @@
 {
   imports = [
     ./dev/default.nix
+    ./ergo/default.nix
   ];
 
   home.packages = with pkgs; [

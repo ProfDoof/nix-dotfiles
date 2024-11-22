@@ -83,6 +83,7 @@
       flake-utils,
       treefmt-nix,
       nix-vscode-extensions,
+      talon-nix,
       ...
     }:
     let
@@ -128,7 +129,7 @@
         )
       ];
       darwinModules = commonModules ++ [
-        talon-nix.darwinModules.talon
+        talon-nix.darwinModules.default
         mac-app-util.darwinModules.default
         # I'd really like this to be a bit dryer in conjuction with the nixosModules version of this code down below. 
         # It just feels weird that I have basically the same code except for a couple of specific details. 
@@ -145,7 +146,7 @@
         }
       ];
       nixOsModules = commonModules ++ [
-        talon-nix.nixosModules.talon
+        talon-nix.nixosModules.default
         nixos-cosmic.nixosModules.default
         home-manager.nixosModules.home-manager
         {

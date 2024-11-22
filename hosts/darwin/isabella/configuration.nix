@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../host.nix
+    ../../host.nix
   ];
   environment.systemPackages = with pkgs; [
 

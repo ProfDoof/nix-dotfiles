@@ -28,7 +28,7 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../host.nix
+    ../../host.nix
   ];
 
   fileSystems."/bois/bigboi" = (boi "84499ee8-a964-4b66-a22d-d26364c41813");
