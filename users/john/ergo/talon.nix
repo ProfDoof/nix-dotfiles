@@ -7,7 +7,7 @@
         owner = "talonhub";
         repo = "community";
         rev = "bb240ba1cf958bd3e2c7791e5a57d09d205adc81";
-        hash = "sha256-111kRZrOn2zrdi+roSOKDeLJjd/Bxk+Ra4lWreGqq+4=";
+        hash = "sha256-Nnpm2d/2BQruT40fx2hzVvGkeDda8pPgx84rclHoOsA=";
       };
       recursive = true;
     };
@@ -16,7 +16,7 @@
         owner = "david-tejada";
         repo = "rango-talon";
         rev = "609641f8fe99fafe7e6f69441f60792fb7c51b60";
-        hash = "sha256-222kRZrOn2zrdi+roSOKDeLJjd/Bxk+Ra4lWreGqq+4=";
+        hash = "sha256-cyJkRZrOn2zrdi+roSOKDeLJjd/Bxk+Ra4lWreGqq+4=";
       };
       recursive = true;
     };
@@ -25,7 +25,7 @@
         owner = "cursorless-dev";
         repo = "cursorless-talon";
         rev = "0aba9e01299637655c7ca11cba7c99b965a1a488";
-        hash = "sha256-333kRZrOn2zrdi+roSOKDeLJjd/Bxk+Ra4lWreGqq+4=";
+        hash = "sha256-aAr4EVE3E3KjGgHcw/ruYmfi3wXKLhPYhHvOC2eQDPE=";
       };
       recursive = true;
     };
@@ -34,7 +34,7 @@
         owner = "chaosparrot";
         repo = "talon_hud";
         rev = "0d676565b95f34841d7268b3667b4b780e50cfaa";
-        hash = "sha256-444kRZrOn2zrdi+roSOKDeLJjd/Bxk+Ra4lWreGqq+4=";
+        hash = "sha256-/uUZkh0SH/rh4jkNbTnZAJplZWHexRXQhVldwI0Gl7k=";
       };
       recursive = true;
     };
