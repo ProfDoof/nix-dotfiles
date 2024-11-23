@@ -1,4 +1,4 @@
 mode: user.gamemode
 -
-whale whale whale:
-    user.toggle("w")
+
+<user.letter>: user.gamemode_key(letter)
