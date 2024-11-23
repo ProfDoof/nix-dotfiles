@@ -38,6 +38,6 @@
       };
       recursive = true;
     };
-    
+    ".talon/user/gamemode" = ./gamemode
   };
 }

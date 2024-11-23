@@ -42,13 +42,5 @@
     envExtra = "export XDG_DATA_HOME=\"/home/john/.local/share\"";
   };
 
-  programs.firefox = {
-    nativeMessagingHosts = [
-      pkgs.gnome-browser-connector
-
-    ];
-    enable = true;
-  };
-
   services.xembed-sni-proxy.enable = true;
 }

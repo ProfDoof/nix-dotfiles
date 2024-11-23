@@ -30,13 +30,7 @@
   programs.zsh.enable = true;
 
 
-  programs.firefox = {
-    nativeMessagingHosts = [
-      pkgs.gnome-browser-connector
-
-    ];
-    enable = true;
-  };
+  programs.firefox.enable = true;
 
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;

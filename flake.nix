@@ -69,6 +69,11 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -84,6 +89,7 @@
       treefmt-nix,
       nix-vscode-extensions,
       talon-nix,
+      firefox-darwin,
       ...
     }:
     let
@@ -144,6 +150,14 @@
           ];
           users.users.john.home = "/Users/john";
         }
+        (
+          { pkgs, config, ... }:
+          {
+            config.nixpkgs.overlays = [
+              firefox-darwin.overlay
+            ];
+          }
+        )
       ];
       nixOsModules = commonModules ++ [
         talon-nix.nixosModules.default
