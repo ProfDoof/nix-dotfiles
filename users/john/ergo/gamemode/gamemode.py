@@ -31,7 +31,7 @@ class GameModeActions:
         "Add a key to the sticky keys"
         sticky_keys.add(s)
 
-    def unsticky(s: str)
+    def unsticky(s: str):
         "Remove a key from the sticky keys"
         if s in sticky_keys:
             sticky_keys.remove(s)
