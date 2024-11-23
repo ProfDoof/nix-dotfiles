@@ -1,4 +1,4 @@
 mode: user.gamemode
 -
 whale whale whale:
-    gamemode.toggle("w")
+    user.toggle("w")
