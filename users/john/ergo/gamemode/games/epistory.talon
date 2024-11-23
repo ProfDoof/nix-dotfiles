@@ -1,4 +1,5 @@
-mode: gamemode
+mode: user.gamemode
+title: /epistory/i
 -
 
 move:
