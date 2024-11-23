@@ -12,13 +12,13 @@ sticky_keys: set[str] = set()
 
 @mod.action_class
 class GameModeActions:
-    def gamemode_key(s: str):
+    def gamemode_key(s: str) -> None:
         if s in sticky_keys:
             actions.user.toggle(s)
 
         actions.key(s)
 
-    def toggle(s: str):
+    def toggle(s: str) -> None:
         "Toggle a key from up to down or down to up"
         if s in active_sticky_keys:
             actions.key(f'{s}:up')
@@ -27,11 +27,11 @@ class GameModeActions:
             actions.key(f'{s}:down')
             active_sticky_keys.add(s)
 
-    def sticky(s: str):
+    def sticky(s: str) -> None:
         "Add a key to the sticky keys"
         sticky_keys.add(s)
 
-    def unsticky(s: str):
+    def unsticky(s: str) -> None:
         "Remove a key from the sticky keys"
         if s in sticky_keys:
             sticky_keys.remove(s)
