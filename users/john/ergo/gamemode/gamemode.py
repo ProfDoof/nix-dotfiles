@@ -13,6 +13,7 @@ sticky_keys: set[str] = set()
 @mod.action_class
 class GameModeActions:
     def gamemode_key(s: str) -> None:
+        "Presses a key respecting stickied keys"
         if s in sticky_keys:
             actions.user.toggle(s)
 
