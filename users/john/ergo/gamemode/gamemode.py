@@ -15,6 +15,6 @@ class GameModeActions:
         if s in active_sticky_keys:
             actions.key(f'{s}:up')
             active_sticky_keys.remove(s)
-        else
+        else:
             actions.key(f'{s}:down')
             active_sticky_keys.add(s)
