@@ -226,6 +226,7 @@
           packages = with pkgs; [
             nil
             bashInteractive
+            python3
           ];
         };
 
