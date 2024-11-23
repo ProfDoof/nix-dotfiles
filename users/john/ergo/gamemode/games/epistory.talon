@@ -1,5 +1,4 @@
 mode: gamemode
-title: /epistory/i
 -
 
 move:
