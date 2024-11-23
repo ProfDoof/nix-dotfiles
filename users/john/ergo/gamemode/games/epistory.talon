@@ -2,8 +2,6 @@ mode: gamemode
 title: /epistory/i
 -
 
-<user.letter>: user.gamemode_key(letter)
-
 move:
     user.sticky("e")
     user.sticky("f")
