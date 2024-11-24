@@ -1,4 +1,4 @@
-from talon import Module, actions, Context, settings
+from talon import Module, actions, Context, settings, noise
 from pprint import pprint
 from collections import defaultdict
 from enum import Enum, auto
@@ -33,6 +33,12 @@ def load_active_game_data(*args):
 
 settings.register("user.active_game_name", load_active_game_data)
 
+def on_hiss(active: bool):
+    if len(current_game_settings[GameSetting.ActiveStickyKeys]) > 0:
+        actions.user.gamemode_stop()
+
+noise.register("hiss", on_hiss)
+
 @mod.action_class
 class GameModeActions:
     def gamemode_key(s: str) -> None: "Presses a key respecting stickied keys"
@@ -62,7 +68,7 @@ class InGameGameModeActions:
             actions.key(f'{s}:down')
             active_sticky_keys.add(s)
     
-    def stop() -> None:
+    def gamemode_stop() -> None:
         "Stop all actions"
         active_sticky_keys = current_game_settings[GameSetting.ActiveStickyKeys]
         for k in active_sticky_keys:
