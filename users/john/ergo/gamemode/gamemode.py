@@ -43,7 +43,7 @@ noise.register("hiss", on_hiss)
 class GameModeActions:
     def gamemode_key(s: str) -> None: "Presses a key respecting stickied keys"
     def toggle(s: str) -> None: "Toggle a key from up to down or down to up"
-    def stop() -> None: "Stop all actions"
+    def gamemode_stop() -> None: "Stop all gamemode related actions"
     def sticky(s: str) -> None: "Add a key to the sticky keys"
     def unsticky(s: str) -> None: "Remove a key from the sticky keys"
 
@@ -72,9 +72,7 @@ class InGameGameModeActions:
         "Stop all actions"
         active_sticky_keys = current_game_settings[GameSetting.ActiveStickyKeys]
         for k in active_sticky_keys:
-            actions.key(f'{s}:down')
-        
-        active_sticky_keys.clear()
+            actions.user.toggle(k)
 
     def sticky(s: str) -> None:
         "Add a key to the sticky keys"
