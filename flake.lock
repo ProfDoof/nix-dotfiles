@@ -346,11 +346,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720066371,
-        "narHash": "sha256-uPlLYH2S0ACj0IcgaK9Lsf4spmJoGejR9DotXiXSBZQ=",
+        "lastModified": 1731952509,
+        "narHash": "sha256-p4gB3Rhw8R6Ak4eMl8pqjCPOLCZRqaehZxdZ/mbFClM=",
         "owner": "nix-community",
         "repo": "nix-github-actions",
-        "rev": "622f829f5fe69310a866c8a6cd07e747c44ef820",
+        "rev": "7b5f051df789b6b20d259924d349a9ba3319b226",
         "type": "github"
       },
       "original": {
@@ -459,11 +459,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728138120,
-        "narHash": "sha256-jyby/8R7XK2jXnxKmL9wTlpQz+CB2T6MbaxcphAe2wM=",
+        "lastModified": 1732198990,
+        "narHash": "sha256-QrOFl3CHZ1kBCI+3dDTuCC5wIkOX1jUaADaepXhDDwk=",
         "owner": "numtide",
         "repo": "nixpkgs-unfree",
-        "rev": "e5f52dafa5b9d45eb25efb4ac053a7f25211c398",
+        "rev": "ed28228356cb90c4ffdacb815b852e98a88b2dce",
         "type": "github"
       },
       "original": {
@@ -651,11 +651,11 @@
         "nixpkgs-unfree": "nixpkgs-unfree"
       },
       "locked": {
-        "lastModified": 1732243280,
-        "narHash": "sha256-Rh1/xI4g8SW+FNJ0+Ei0pZ4ReXvcJcPD66bJLSBxFYQ=",
+        "lastModified": 1732460373,
+        "narHash": "sha256-37CjqKBWz+v0s1/YrlF6PIfYda7/sJQio5M7A1c1xMY=",
         "owner": "ProfDoof",
         "repo": "talon-nix",
-        "rev": "0dc8c3c48204ca481210864d29a785718b87c77b",
+        "rev": "19ce4faf821f66933e9282640286844b54f0855c",
         "type": "github"
       },
       "original": {
