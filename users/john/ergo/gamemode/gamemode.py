@@ -37,6 +37,7 @@ settings.register("user.active_game_name", load_active_game_data)
 class GameModeActions:
     def gamemode_key(s: str) -> None: "Presses a key respecting stickied keys"
     def toggle(s: str) -> None: "Toggle a key from up to down or down to up"
+    def stop() -> None: "Stop all actions"
     def sticky(s: str) -> None: "Add a key to the sticky keys"
     def unsticky(s: str) -> None: "Remove a key from the sticky keys"
 
@@ -60,6 +61,14 @@ class InGameGameModeActions:
         else:
             actions.key(f'{s}:down')
             active_sticky_keys.add(s)
+    
+    def stop() -> None:
+        "Stop all actions"
+        active_sticky_keys = current_game_settings[GameSetting.ActiveStickyKeys]
+        for k in active_sticky_keys:
+            actions.key(f'{s}:down')
+        
+        active_sticky_keys.clear()
 
     def sticky(s: str) -> None:
         "Add a key to the sticky keys"
