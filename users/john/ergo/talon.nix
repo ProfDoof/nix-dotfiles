@@ -42,5 +42,9 @@
       source = ./gamemode;
       recursive = true;
     };
+    ".talon/user/games" = {
+      source = ./games;
+      recursive = true;
+    };
   };
 }
