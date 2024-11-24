@@ -47,6 +47,7 @@ class InGameGameModeActions:
         "Presses a key respecting stickied keys"
         if s in current_game_settings[GameSetting.StickyKeys]:
             actions.user.toggle(s)
+            return
 
         actions.key(s)
 
