@@ -38,6 +38,15 @@
       };
       recursive = true;
     };
+    ".talon/user/speak-the-spire-talon" = {
+      source = pkgs.fetchFromGitHub {
+        owner = "brollin";
+        repo = "speak-the-spire-talon";
+        rev = "dd3ede06fa736efb00ddf5fe9fded7d19a9e094d";
+        hash = "sha256-aaaaah0SH/rh4jkNbTnZAJplZWHexRXQhVldwI0Gl7k=";
+      };
+      recursive = true;
+    };
     ".talon/user/gamemode" = {
       source = ./gamemode;
       recursive = true;
