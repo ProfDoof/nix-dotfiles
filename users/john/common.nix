@@ -15,7 +15,7 @@
     # Fun and games
     spotify
     # TODO: Check if this is still marked insecure
-    # cinny-desktop
+    element-desktop
   ];
 
   programs.alacritty = {
