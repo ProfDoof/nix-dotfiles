@@ -95,10 +95,16 @@ in
         layout = "us";
         variant = "";
       };
-      displayManager.gdm.enable = true;
+      displayManager.gdm = {
+        settings.daemon.DefaultSession = "gnome-xorg.desktop";
+        enable = true;
+      };
       desktopManager.gnome.enable = true;
     };
     gnome.gnome-keyring.enable = true;
+    udev.packages = with pkgs; [
+      gnome.gnome-settings-daemon
+    ];
 
     # desktopManager.cosmic.enable = true;
     # displayManager.cosmic-greeter.enable = true;
@@ -266,6 +272,7 @@ in
     protonup-qt
     bitwarden-desktop
     bitwarden-cli
+    gnomeExtensions.appindicator
   ];
 
   fonts.packages = with pkgs; [
