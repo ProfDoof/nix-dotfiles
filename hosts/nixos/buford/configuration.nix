@@ -103,7 +103,7 @@ in
     };
     gnome.gnome-keyring.enable = true;
     udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
+      gnome-settings-daemon
     ];
 
     # desktopManager.cosmic.enable = true;
