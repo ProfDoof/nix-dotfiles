@@ -20,6 +20,8 @@
           sissel.shopify-liquid
           pokey.cursorless
           pokey.talon
+          sleistner.vscode-fileutils
+          pokey.command-server
           pokey.parse-tree
         ]);
     };
