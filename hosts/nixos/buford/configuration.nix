@@ -275,7 +275,6 @@ in
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   fonts.packages = with pkgs; [
-    nerdfonts
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
@@ -283,7 +282,7 @@ in
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
