@@ -255,7 +255,6 @@ in
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    nerdfonts
     grim
     slurp
     wl-clipboard
@@ -273,7 +272,7 @@ in
     bitwarden-desktop
     bitwarden-cli
     gnomeExtensions.appindicator
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   fonts.packages = with pkgs; [
     nerdfonts
