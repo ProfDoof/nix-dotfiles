@@ -2,8 +2,8 @@
 {
   imports = [
     ./common.nix
-    ./de/default.nix
-    ./hobby/default.nix
+    ./de
+    ./hobby
   ];
   targets.genericLinux.enable = true;
 

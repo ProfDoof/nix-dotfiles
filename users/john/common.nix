@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
-    ./dev/default.nix
-    ./ergo/default.nix
+    ./dev
+    ./ergo
+    ./ncsu
   ];
 
   home.packages = with pkgs; [
