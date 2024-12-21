@@ -91,49 +91,16 @@
       talon-nix,
       firefox-darwin,
       ...
-    }:
+    }@inputs:
     let
+      dotlib = import ./lib/default.nix;
       # Eventually the common modules, darwin modules, and nixos modules, I think I would like broken out into their own files 
       # and then I want to somehow just add requirements to the modules to specify that they are only for NixOS or only for 
       # Darwin, or only for Home-Manager. However, I need to understand the module system better for that. I'm currently
       # thinking that the way to go might be something like a module option that allows a host to specify the OS they expect
       # to be running. Then, the modules can opt-in or out to being included. After that, the system can create the correct 
       # type of configuration. Whether that be a Darwin Config, a Nixos Config, or a Home Manager Config. 
-      commonModules = [
-        {
-          nix.settings = {
-            experimental-features = [
-              "nix-command"
-              "flakes"
-            ];
-            extra-substituters = [
-              "https://cache.nixos.org/"
-              "https://cosmic.cachix.org/"
-              "https://nixpkgs-wayland.cachix.org/"
-              "https://nix-community.cachix.org/"
-            ];
-            trusted-public-keys = [
-              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-              "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-              "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            ];
-          };
-        }
-        (
-          { pkgs, config, ... }:
-          {
-            # Allow unfree packages
-            config.nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                fenix.overlays.default
-                nix-vscode-extensions.overlays.default
-              ];
-            };
-          }
-        )
-      ];
+      commonModules = dotlib.common.modules inputs;
       darwinModules = commonModules ++ [
         talon-nix.darwinModules.default
         mac-app-util.darwinModules.default
