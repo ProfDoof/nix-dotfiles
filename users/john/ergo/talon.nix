@@ -42,7 +42,7 @@
       source = pkgs.fetchFromGitHub {
         owner = "ProfDoof";
         repo = "speak-the-spire-talon";
-        rev = "fd8a2cc9af6d968bf6134994fcef8b3f9df4f40bnfd8a2cc9af6d968bf6134994fcef8b3f9df4f40b";
+        rev = "fd8a2cc9af6d968bf6134994fcef8b3f9df4f40b";
         hash = "";
       };
       recursive = true;
