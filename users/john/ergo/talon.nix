@@ -40,9 +40,9 @@
     };
     ".talon/user/speak-the-spire-talon" = {
       source = pkgs.fetchFromGitHub {
-        owner = "brollin";
+        owner = "ProfDoof";
         repo = "speak-the-spire-talon";
-        rev = "dd3ede06fa736efb00ddf5fe9fded7d19a9e094d";
+        rev = "fd8a2cc9af6d968bf6134994fcef8b3f9df4f40bn";
         hash = "sha256-wW3XzoiSnAFxXxkvdHNbnv56RR5dpGaUUeO6w+C3XzE=";
       };
       recursive = true;
