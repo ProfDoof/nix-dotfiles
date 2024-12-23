@@ -43,7 +43,7 @@
         owner = "ProfDoof";
         repo = "speak-the-spire-talon";
         rev = "fd8a2cc9af6d968bf6134994fcef8b3f9df4f40b";
-        hash = "";
+        hash = "sha256-K6LcQKH7Js1umnweiD/tbulfk9m1WrfAp+UHIVIvCns=";
       };
       recursive = true;
     };
