@@ -35,4 +35,33 @@
       }
     )
   ];
+  
+  # getHosts =
+  #   basePaths:
+  #   hostType:
+  #   (nixpkgs.lib.filterAttrs (
+  #     host: type:
+  #     type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix)
+  #   ) (builtins.readDir ./hosts/${hostType}));
+
+  # # Read directories
+  
+
+  # getHosts' = 
+  #   basePaths:
+  #   hostType:
+  #   let
+  #     getBaseHosts = hostType: basePath: 
+  #       nixpkgs.lib.filterAttrs (
+  #         host: type:
+  #         type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix)
+  #       ) builtins.readDir ${basePath}/${hostType};
+  #   in
+  #     builtins.map (readBasePath hostType) basePaths;
+
+  # Filter to hosts that have configuration.nix
+
+  # Merge same hosts
+
+  # Return configuration.nix paths
 }

@@ -4,7 +4,7 @@
     ../../host.nix
   ];
   environment.systemPackages = with pkgs; [
-
+    docker
   ];
 
   programs.zsh.enable = true;
