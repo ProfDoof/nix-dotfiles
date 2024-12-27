@@ -1,3 +1,5 @@
+inputs: 
+with inputs;
 {
   genFlags = system: {
     isDarwin = system == "darwin";

@@ -1,6 +1,7 @@
-
+inputs: 
+with inputs;
 {
-  modules = inputs: with inputs; [
+  modules = [
     {
       nix.settings = {
         experimental-features = [
@@ -35,33 +36,25 @@
       }
     )
   ];
-  
-  # getHosts =
-  #   basePaths:
-  #   hostType:
-  #   (nixpkgs.lib.filterAttrs (
-  #     host: type:
-  #     type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix)
-  #   ) (builtins.readDir ./hosts/${hostType}));
 
-  # # Read directories
-  
-
-  # getHosts' = 
-  #   basePaths:
-  #   hostType:
-  #   let
-  #     getBaseHosts = hostType: basePath: 
-  #       nixpkgs.lib.filterAttrs (
-  #         host: type:
-  #         type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix)
-  #       ) builtins.readDir ${basePath}/${hostType};
-  #   in
-  #     builtins.map (readBasePath hostType) basePaths;
-
-  # Filter to hosts that have configuration.nix
-
-  # Merge same hosts
-
-  # Return configuration.nix paths
+  # getHosts return type
+  # { hostName1 = [ modPath1 modPath2 modPath3 ... ]; hostName2 = [ ... ]; ... }
+  getHosts = 
+    basePaths: hostType:
+    nixpkgs.lib.attrsets.zipAttrs (
+      builtins.map 
+      (
+        basePath: 
+        nixpkgs.lib.mapAttrs (
+          host: _:
+          "${basePath}/${hostType}/${host}/configuration.nix"
+        ) (
+          nixpkgs.lib.filterAttrs (
+            host: type:
+            type == "directory" && builtins.pathExists "${basePath}/${hostType}/${host}/configuration.nix"
+          ) (builtins.readDir "${basePath}/${hostType}")
+        )
+      ) 
+      basePaths
+    );
 }

@@ -93,15 +93,16 @@
       ...
     }@inputs:
     let
-      dotlib = import ./lib/default.nix;
+      dotlib = import ./lib/default.nix inputs;
       # Eventually the common modules, darwin modules, and nixos modules, I think I would like broken out into their own files 
       # and then I want to somehow just add requirements to the modules to specify that they are only for NixOS or only for 
       # Darwin, or only for Home-Manager. However, I need to understand the module system better for that. I'm currently
       # thinking that the way to go might be something like a module option that allows a host to specify the OS they expect
       # to be running. Then, the modules can opt-in or out to being included. After that, the system can create the correct 
       # type of configuration. Whether that be a Darwin Config, a Nixos Config, or a Home Manager Config. 
-      commonModules = dotlib.common.modules inputs;
+      commonModules = dotlib.common.modules;
       darwinModules = commonModules ++ [
+        ./os/darwin.nix
         talon-nix.darwinModules.default
         mac-app-util.darwinModules.default
         # I'd really like this to be a bit dryer in conjuction with the nixosModules version of this code down below. 
@@ -127,6 +128,7 @@
         )
       ];
       nixOsModules = commonModules ++ [
+        ./os/nixos.nix
         talon-nix.nixosModules.default
         nixos-cosmic.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -148,12 +150,7 @@
         )
       ];
       # Ideally this will turn into a helper function for a more feature complete function. 
-      getHosts =
-        hostType:
-        (nixpkgs.lib.filterAttrs (
-          host: type:
-          type == "directory" && builtins.pathExists (./hosts/${hostType}/${host}/configuration.nix)
-        ) (builtins.readDir ./hosts/${hostType}));
+      getHosts = dotlib.common.getHosts [ ./hosts ./private/hosts ];
     in
     {
       nixosConfigurations =
@@ -161,24 +158,18 @@
           # One thing to consider in the future is whether I want to also pass in the inputs so that my
           # modules can leverage the info those bring in. 
           (
-            host: _:
+            _: hostModules:
             nixpkgs.lib.nixosSystem {
               system = "x86_64-linux";
-              modules = nixOsModules ++ [
-                ./os/nixos.nix
-                ./hosts/nixos/${host}/configuration.nix
-              ];
+              modules = hostModules ++ nixOsModules;
             }
           )
           (getHosts "nixos");
       darwinConfigurations = nixpkgs.lib.mapAttrs (
-        host: _:
+        _: hostModules:
         nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
-          modules = darwinModules ++ [
-            ./os/darwin.nix
-            ./hosts/darwin/${host}/configuration.nix
-          ];
+          modules = hostModules ++ darwinModules;
         }
       ) (getHosts "darwin");
     }
