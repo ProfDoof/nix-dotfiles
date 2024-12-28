@@ -115,6 +115,7 @@
           home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
           home-manager.users.john.imports = [
             ./users/john/darwin.nix
+            ./private/users/john/darwin.nix
           ];
           users.users.john.home = "/Users/john";
         }
@@ -138,6 +139,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.users.john.imports = [
             ./users/john/nixos.nix
+            ./private/users/john/nixos.nix
           ];
         }
         (
