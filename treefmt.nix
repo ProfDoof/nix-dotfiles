@@ -15,13 +15,13 @@
     includes = [ "*.talon" ];
   };
   settings.global.excludes = [
-    ".direnv/"
+    ".direnv/*"
     ".env"
     ".envrc"
     ".gitignore"
-    "target/"
-    ".vscode/"
-    ".git/"
-    "private/.git/"
+    "target/*"
+    ".vscode/*"
+    ".git/*"
+    "private/.git/*"
   ];
 }
