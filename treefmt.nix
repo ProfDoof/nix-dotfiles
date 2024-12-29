@@ -3,7 +3,7 @@
 {
   projectRootFile = "flake.nix";
   programs.nixfmt.enable = true;
-  settings.verbose = 2;
+  # settings.verbose = 2;
   settings.walk = "filesystem";
   settings.formatter."talonfmt" = {
     command = "${pkgs.pipx}/bin/pipx";
