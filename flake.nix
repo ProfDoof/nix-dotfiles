@@ -191,8 +191,7 @@
             bashInteractive
             python3
             pipx
-            shfmt
-            shellcheck
+            ruff
           ];
         };
 
