@@ -21,5 +21,6 @@
     ".gitignore"
     "target/"
     ".vscode/"
+    "**/.git"
   ];
 }
