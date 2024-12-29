@@ -5,7 +5,7 @@
   programs = {
     nixfmt.enable = true;
     ruff-format.enable = true;
-    shfmt.enable = true;
+    # shfmt.enable = true;
   };
   # settings.verbose = 2;
   settings.walk = "filesystem";
@@ -27,5 +27,7 @@
     ".vscode/*"
     ".git/*"
     "private/.git/*"
+    "*.zsh"
+    ".ruff_cache/*"
   ];
 }
