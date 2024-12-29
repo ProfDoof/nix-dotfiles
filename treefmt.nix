@@ -6,7 +6,6 @@
     nixfmt.enable = true;
     ruff-format.enable = true;
     shfmt.enable = true;
-    shellcheck.enable = true;
   };
   # settings.verbose = 2;
   settings.walk = "filesystem";
