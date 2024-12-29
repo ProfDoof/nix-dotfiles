@@ -2,7 +2,12 @@
 
 {
   projectRootFile = "flake.nix";
-  programs.nixfmt.enable = true;
+  programs = {
+    nixfmt.enable = true;
+    ruff-format.enable = true;
+    shfmt.enable = true;
+    shellcheck.enable = true;
+  };
   # settings.verbose = 2;
   settings.walk = "filesystem";
   settings.formatter."talonfmt" = {
