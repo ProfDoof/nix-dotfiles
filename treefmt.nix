@@ -18,5 +18,6 @@
     ".envrc"
     ".gitignore"
     "target/"
+    ".vscode/"
   ];
 }
