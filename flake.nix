@@ -190,6 +190,7 @@
             nil
             bashInteractive
             python3
+            pipx
           ];
         };
 
