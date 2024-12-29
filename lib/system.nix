@@ -1,6 +1,4 @@
-inputs: 
-with inputs;
-{
+inputs: with inputs; {
   genFlags = system: {
     isDarwin = system == "darwin";
     isGenericLinux = system == "linux";

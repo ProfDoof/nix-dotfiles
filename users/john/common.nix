@@ -30,7 +30,6 @@
   programs.bash.enable = true;
   programs.zsh.enable = true;
 
-
   programs.firefox.enable = true;
 
   home.stateVersion = "24.05";

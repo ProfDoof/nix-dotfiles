@@ -4,13 +4,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # This gives me access to the cosmic desktop environment from System76. Eventually this will be replaced by a nixpkgs pkg
-    # or a System76 official one. 
+    # or a System76 official one.
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # How I manage the home directories for the users on every one of my machines. 
+    # How I manage the home directories for the users on every one of my machines.
     # TODO: Allow for aliases for users to allow it to work on machines that I have less control over
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # A set of packages for rust and rust associated tooling. 
+    # A set of packages for rust and rust associated tooling.
     # TODO: Should I be using an overlay on this? Is that dangerous?
     fenix = {
       url = "github:andresilva/fenix/fix-platforms";
@@ -39,9 +39,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Eventually the plan is to use this to have a declarative definition of my talon set-up that can be used on any machine 
+    # Eventually the plan is to use this to have a declarative definition of my talon set-up that can be used on any machine
     # I use. In particular, I'd like for this to play nicely with crafting my own talon files but also pull down community talon
-    # files. 
+    # files.
     talon-nix = {
       url = "github:ProfDoof/talon-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,19 +94,19 @@
     }@inputs:
     let
       dotlib = import ./lib/default.nix inputs;
-      # Eventually the common modules, darwin modules, and nixos modules, I think I would like broken out into their own files 
-      # and then I want to somehow just add requirements to the modules to specify that they are only for NixOS or only for 
+      # Eventually the common modules, darwin modules, and nixos modules, I think I would like broken out into their own files
+      # and then I want to somehow just add requirements to the modules to specify that they are only for NixOS or only for
       # Darwin, or only for Home-Manager. However, I need to understand the module system better for that. I'm currently
       # thinking that the way to go might be something like a module option that allows a host to specify the OS they expect
-      # to be running. Then, the modules can opt-in or out to being included. After that, the system can create the correct 
-      # type of configuration. Whether that be a Darwin Config, a Nixos Config, or a Home Manager Config. 
+      # to be running. Then, the modules can opt-in or out to being included. After that, the system can create the correct
+      # type of configuration. Whether that be a Darwin Config, a Nixos Config, or a Home Manager Config.
       commonModules = dotlib.common.modules;
       darwinModules = commonModules ++ [
         ./os/darwin.nix
         talon-nix.darwinModules.default
         mac-app-util.darwinModules.default
-        # I'd really like this to be a bit dryer in conjuction with the nixosModules version of this code down below. 
-        # It just feels weird that I have basically the same code except for a couple of specific details. 
+        # I'd really like this to be a bit dryer in conjuction with the nixosModules version of this code down below.
+        # It just feels weird that I have basically the same code except for a couple of specific details.
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -151,14 +151,17 @@
           }
         )
       ];
-      # Ideally this will turn into a helper function for a more feature complete function. 
-      getHosts = dotlib.common.getHosts [ ./hosts ./private/hosts ];
+      # Ideally this will turn into a helper function for a more feature complete function.
+      getHosts = dotlib.common.getHosts [
+        ./hosts
+        ./private/hosts
+      ];
     in
     {
       nixosConfigurations =
         nixpkgs.lib.mapAttrs
           # One thing to consider in the future is whether I want to also pass in the inputs so that my
-          # modules can leverage the info those bring in. 
+          # modules can leverage the info those bring in.
           (
             _: hostModules:
             nixpkgs.lib.nixosSystem {

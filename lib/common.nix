@@ -1,6 +1,4 @@
-inputs: 
-with inputs;
-{
+inputs: with inputs; {
   modules = [
     {
       nix.settings = {
@@ -39,22 +37,17 @@ with inputs;
 
   # getHosts return type
   # { hostName1 = [ modPath1 modPath2 modPath3 ... ]; hostName2 = [ ... ]; ... }
-  getHosts = 
+  getHosts =
     basePaths: hostType:
     nixpkgs.lib.attrsets.zipAttrs (
-      builtins.map 
-      (
-        basePath: 
-        nixpkgs.lib.mapAttrs (
-          host: _:
-          "${basePath}/${hostType}/${host}/configuration.nix"
-        ) (
+      builtins.map (
+        basePath:
+        nixpkgs.lib.mapAttrs (host: _: "${basePath}/${hostType}/${host}/configuration.nix") (
           nixpkgs.lib.filterAttrs (
             host: type:
             type == "directory" && builtins.pathExists "${basePath}/${hostType}/${host}/configuration.nix"
           ) (builtins.readDir "${basePath}/${hostType}")
         )
-      ) 
-      basePaths
+      ) basePaths
     );
 }

@@ -2,10 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 let
@@ -119,13 +120,13 @@ in
     #   };
     # };
   };
-  # systemd.tmpfiles.rules = 
+  # systemd.tmpfiles.rules =
   # let
   #   perms = "- gdm gdm -";
   #   mkTmpfileRules = name: contents:
   #     [ "f+ ${name} ${perms}"] ++ map (l: "w+ ${name} - - - - ${l}") (builtins.split "\n" contents);
   # in
-  #   mkTmpfileRules "/run/gdm/.config/monitors.xml" 
+  #   mkTmpfileRules "/run/gdm/.config/monitors.xml"
   #     ''
   #       <monitors version="2">
   #         <configuration>
@@ -252,37 +253,43 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    grim
-    nemo-with-extensions
-    slurp
-    wl-clipboard
-    mako
-    pavucontrol
-    wireplumber
-    discord
-    glxinfo
-    vulkan-tools
-    glmark2
-    linuxKernel.packages.linux_6_6.xpadneo
-    lutris
-    protonup-qt
-    bitwarden-desktop
-    bitwarden-cli
-    gnomeExtensions.appindicator
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  environment.systemPackages =
+    with pkgs;
+    [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+      grim
+      nemo-with-extensions
+      slurp
+      wl-clipboard
+      mako
+      pavucontrol
+      wireplumber
+      discord
+      glxinfo
+      vulkan-tools
+      glmark2
+      linuxKernel.packages.linux_6_6.xpadneo
+      lutris
+      protonup-qt
+      bitwarden-desktop
+      bitwarden-cli
+      gnomeExtensions.appindicator
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    with pkgs;
+    [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      mplus-outline-fonts.githubRelease
+      dina-font
+      proggyfonts
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
