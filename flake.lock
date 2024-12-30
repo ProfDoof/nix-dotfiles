@@ -655,15 +655,16 @@
         "nixpkgs-unfree": "nixpkgs-unfree"
       },
       "locked": {
-        "lastModified": 1732460473,
-        "narHash": "sha256-oEHRzdDEDyhe1m/S8sdyyd5yNsrszzQz03unurdc03M=",
+        "lastModified": 1735532923,
+        "narHash": "sha256-3rIf2SUF927L/YZqPLxo+NAXP9W550zThKHiTrGO26I=",
         "owner": "ProfDoof",
         "repo": "talon-nix",
-        "rev": "e23784760f2ac72a26bcf8ab9c3046354b54def6",
+        "rev": "6b01576c4d4c3bb9b88aa038f84689a81bf07230",
         "type": "github"
       },
       "original": {
         "owner": "ProfDoof",
+        "ref": "fix_pengo",
         "repo": "talon-nix",
         "type": "github"
       }
