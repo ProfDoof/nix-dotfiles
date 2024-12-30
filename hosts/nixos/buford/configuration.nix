@@ -298,6 +298,7 @@ in
     enable = true;
     enableSSHSupport = true;
   };
+  services.pcscd.enable = true;
 
   # List services that you want to enable:
 
