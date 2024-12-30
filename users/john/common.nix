@@ -22,7 +22,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      shell = "${pkgs.zsh}/bin/zsh";
+      terminal.shell = "${pkgs.zsh}/bin/zsh";
       font.size = 14;
     };
   };
