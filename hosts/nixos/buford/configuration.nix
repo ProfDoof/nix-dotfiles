@@ -267,14 +267,18 @@ in
       wireplumber
       discord
       glxinfo
+      bitwarden-desktop
+      bitwarden-cli
+      gnomeExtensions.appindicator
+
+      # Gaming
       vulkan-tools
       glmark2
       linuxKernel.packages.linux_6_6.xpadneo
       lutris
       protonup-qt
-      bitwarden-desktop
-      bitwarden-cli
-      gnomeExtensions.appindicator
+      winetricks
+      wineWowPackages.stable
     ]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
