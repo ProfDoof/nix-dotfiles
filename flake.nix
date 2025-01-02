@@ -154,7 +154,7 @@
             ];
             # Optional, needed for `nix-alien-ld`
             programs.nix-ld.enable = true;
-            config.nixpkgs.overlays = [
+            nixpkgs.overlays = [
               nixpkgs-wayland.overlay
             ];
           }
