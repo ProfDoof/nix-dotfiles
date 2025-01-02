@@ -43,7 +43,7 @@
     # I use. In particular, I'd like for this to play nicely with crafting my own talon files but also pull down community talon
     # files.
     talon-nix = {
-      url = "github:ProfDoof/talon-nix/fix_pengo";
+      url = "github:ProfDoof/talon-nix/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -74,10 +74,14 @@
       url = "github:bandithedoge/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       nixos-cosmic,
       home-manager,
@@ -143,8 +147,13 @@
           ];
         }
         (
-          { pkgs, config, ... }:
+          { self, system, pkgs, config, ... }:
           {
+            environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
+              nix-alien
+            ];
+            # Optional, needed for `nix-alien-ld`
+            programs.nix-ld.enable = true;
             config.nixpkgs.overlays = [
               nixpkgs-wayland.overlay
             ];
@@ -164,8 +173,9 @@
           # modules can leverage the info those bring in.
           (
             _: hostModules:
-            nixpkgs.lib.nixosSystem {
+            nixpkgs.lib.nixosSystem rec {
               system = "x86_64-linux";
+              specialArgs = { inherit self system; };
               modules = hostModules ++ nixOsModules;
             }
           )
