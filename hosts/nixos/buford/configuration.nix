@@ -39,7 +39,7 @@ in
   security.polkit.enable = true;
   security.rtkit.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   hardware.sane = {
