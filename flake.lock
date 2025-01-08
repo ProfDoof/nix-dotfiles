@@ -778,11 +778,11 @@
         "nixpkgs-unfree": "nixpkgs-unfree"
       },
       "locked": {
-        "lastModified": 1736297939,
-        "narHash": "sha256-vNXPfiWzJDP+HZwiipxod9kGFBcbDzr7u45RpCJ0OBE=",
+        "lastModified": 1736298418,
+        "narHash": "sha256-45s/XqXdJBtsVP1wNIRSlxgL39+tU8iLxcJSOLHIpns=",
         "owner": "ProfDoof",
         "repo": "talon-nix",
-        "rev": "c5c4730aa25fc41fac7c56ea3b15b634d07e1bcc",
+        "rev": "15d882e4074c7a9c65351488db4efa8e7001f403",
         "type": "github"
       },
       "original": {
