@@ -26,6 +26,7 @@
           sleistner.vscode-fileutils
           pokey.command-server
           pokey.parse-tree
+          astro-build.astro-vscode
         ]);
     };
   };
