@@ -28,6 +28,7 @@
           pokey.parse-tree
           astro-build.astro-vscode
           github.copilot
+          github.copilot-chat
         ]);
     };
   };
