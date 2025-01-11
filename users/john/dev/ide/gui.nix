@@ -27,6 +27,7 @@
           pokey.command-server
           pokey.parse-tree
           astro-build.astro-vscode
+        ]) ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace-release; [
           github.copilot
           github.copilot-chat
         ]);
