@@ -7,9 +7,10 @@ update() {
     echo "[[talon_repos]]"
     echo "owner = \"${1}\"";
     echo "repo = \"${2}\"";
-    echo "rev = \""$(get_rev "git@github.com:${1}/${2}")"\"";
-    combined="${1}${2}"
-    echo "hash = \"sha256-${(l:44::A:)combined}=\""
+    rev=$(get_rev "git@github.com:${1}/${2}")
+    echo "rev = \"${rev}\"";
+    hash=$(nix-prefetch-url --unpack "https://github.com/${1}/${2}/archive/${rev}.zip")
+    echo "hash = \"${hash}\""
     echo
 }
 
