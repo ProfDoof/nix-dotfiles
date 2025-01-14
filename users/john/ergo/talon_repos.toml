@@ -2,29 +2,29 @@
 owner = "talonhub"
 repo = "community"
 rev = "2100ebc4e2e572e42a2de9d2d217c2004b874098"
-hash = "sha256-talonhubcommunity"
+hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAtalonhubcommunity"
 
 [[talon_repos]]
 owner = "david-tejada"
 repo = "rango-talon"
 rev = "609641f8fe99fafe7e6f69441f60792fb7c51b60"
-hash = "sha256-david-tejadarango-talon"
+hash = "sha256-AAAAAAAAAAAAAAAAAAAAAdavid-tejadarango-talon"
 
 [[talon_repos]]
 owner = "cursorless-dev"
 repo = "cursorless-talon"
 rev = "7795f4cd902e9bcd36dc3982e5a2c0f9b5c87a0f"
-hash = "sha256-cursorless-devcursorless-talon"
+hash = "sha256-AAAAAAAAAAAAAAcursorless-devcursorless-talon"
 
 [[talon_repos]]
 owner = "chaosparrot"
 repo = "talon_hud"
 rev = "a2d569e8a7152a518940bb3ee25bb1f2a20d1f9e"
-hash = "sha256-chaosparrottalon_hud"
+hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAchaosparrottalon_hud"
 
 [[talon_repos]]
 owner = "ProfDoof"
 repo = "speak-the-spire-talon"
 rev = "dd3ede06fa736efb00ddf5fe9fded7d19a9e094d"
-hash = "sha256-ProfDoofspeak-the-spire-talon"
+hash = "sha256-AAAAAAAAAAAAAAAProfDoofspeak-the-spire-talon"
 
