@@ -1,0 +1,15 @@
+{
+	"whistle": {
+		"sounds": ["sound_whistle"],
+		"threshold": {
+			">power": 10,
+			">probability": 0.9
+		},
+		"detect_after": 0.1,
+		"graceperiod": 0.1,
+		"grace_threshold": {
+			">power": 7,
+			">probability": 0.2
+		}
+	}
+}

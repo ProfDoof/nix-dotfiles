@@ -55,5 +55,13 @@
       source = ./games;
       recursive = true;
     };
+    ".talon/parrot" = {
+      source = ./parrot/talon;
+      recursive = true;
+    };
+    ".talon/user/parrot" = {
+      source = ./parrot/user;
+      recursive = true;
+    };
   };
 }
