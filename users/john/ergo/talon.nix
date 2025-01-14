@@ -13,7 +13,7 @@ let
       recursive = true;
     };
   };
-  talon_repos = (lib.importToml ./talon_repos.toml).talon_repos;
+  talon_repos = (lib.importTOML ./talon_repos.toml).talon_repos;
 
 in
 {
