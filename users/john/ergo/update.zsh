@@ -8,7 +8,7 @@ update() {
     echo "owner = \"${1}\"";
     echo "repo = \"${2}\"";
     echo "rev = \""$(get_rev "git@github.com:${1}/${2}")"\"";
-    echo "hash = \"\""
+    echo "hash = \"sha256-${1}${2}\""
     echo
 }
 
