@@ -8,7 +8,7 @@ let
         owner = target.owner;
         repo = target.repo;
         rev = target.rev;
-        hash = target.hash;
+        sha256 = target.hash;
       };
       recursive = true;
     };
