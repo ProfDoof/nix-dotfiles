@@ -9,7 +9,7 @@ update() {
     echo "repo = \"${2}\"";
     echo "rev = \""$(get_rev "git@github.com:${1}/${2}")"\"";
     combined="${1}${2}"
-    echo "hash = \"sha256-${(l:44::A:)combined}\""
+    echo "hash = \"sha256-${(l:44::A:)combined}=\""
     echo
 }
 
