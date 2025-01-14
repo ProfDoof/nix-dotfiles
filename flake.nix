@@ -75,7 +75,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
@@ -147,7 +146,13 @@
           ];
         }
         (
-          { self, system, pkgs, config, ... }:
+          {
+            self,
+            system,
+            pkgs,
+            config,
+            ...
+          }:
           {
             environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
               nix-alien

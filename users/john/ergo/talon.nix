@@ -1,8 +1,7 @@
 { pkgs, lib, ... }:
-let 
-  genTarget = target:
-  { 
-    name=".talon/user/${target.repo}"; 
+let
+  genTarget = target: {
+    name = ".talon/user/${target.repo}";
     value = {
       source = pkgs.fetchFromGitHub {
         owner = target.owner;
@@ -17,8 +16,6 @@ let
 
 in
 {
-  
-
   home.file = lib.listToAttrs (lib.map genTarget talon_repos) // {
     ".talon/user/gamemode" = {
       source = ./gamemode;
