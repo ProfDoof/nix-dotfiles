@@ -5,10 +5,10 @@ let
     name=".talon/user/${target.repo}"; 
     value = {
       source = pkgs.fetchFromGitHub {
-        owner = repo.owner;
-        repo = repo.repo;
-        rev = repo.rev;
-        hash = repo.hash;
+        owner = target.owner;
+        repo = target.repo;
+        rev = target.rev;
+        hash = target.hash;
       };
       recursive = true;
     };
