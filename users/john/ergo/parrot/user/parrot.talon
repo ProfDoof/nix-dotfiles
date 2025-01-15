@@ -2,7 +2,7 @@ parrot(whistle):
 	print("Whistle")
 
 parrot(tik):
-	print("Tik")
+	mouse_click(0)
 
 parrot(tok):
 	print("Tok")
