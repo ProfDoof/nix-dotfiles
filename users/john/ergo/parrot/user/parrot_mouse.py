@@ -10,7 +10,7 @@ ctx = Context()
 class MouseActions:
     def toggle_parrot_mouse():
         """Makes the parrot mouse tag active"""
-        if actions.tracking.control_mouse_enabled():
+        if actions.tracking.control_enabled():
             ctx.tags = ["user.parrot_mouse"]
         else:
             ctx.tags = []
