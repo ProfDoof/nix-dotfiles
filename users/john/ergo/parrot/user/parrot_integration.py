@@ -1,12 +1,6 @@
 # silence,
-# sound_whistle,
-# click_lateral,
-# click_palatal,
 # background_noise_typing,
-# sibilant_s,
 # sound_finger_snap,
-# click_alveolar,
-# sound_pop,
 # background_noise_mousing
 
 from copy import copy
