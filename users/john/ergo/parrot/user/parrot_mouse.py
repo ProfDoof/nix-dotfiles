@@ -12,6 +12,7 @@ parrot_mouse_toggled = False
 class MouseActions:
     def toggle_parrot_mouse():
         """Makes the parrot mouse tag active"""
+        global parrot_mouse_toggled
         parrot_mouse_toggled = not parrot_mouse_toggled
         if parrot_mouse_toggled:
             ctx.tags = []
