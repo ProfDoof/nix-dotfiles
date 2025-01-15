@@ -7,9 +7,6 @@ parrot(tik):
 parrot(tok):
 	print("Tok")
 
-parrot(tuk):
-	print("Tuk")
-
 parrot(hiss):
 	print("Hiss")
 
