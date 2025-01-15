@@ -424,7 +424,7 @@ class Delegate(ParrotDelegate):
         return active
 
 
-parrot_delegate = Delegate(debug=True)
+parrot_delegate = Delegate(debug=False)
 system = ParrotSystem(model_path, parrot_delegate)
 
 
