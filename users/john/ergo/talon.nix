@@ -33,5 +33,13 @@ in
       source = ./parrot/user;
       recursive = true;
     };
+    ".talon/user/override" = {
+      source = ./override;
+      recursive = true;
+    };
+    ".talon/user/sleep" = {
+      source = ./sleep;
+      recursive = true;
+    };
   };
 }

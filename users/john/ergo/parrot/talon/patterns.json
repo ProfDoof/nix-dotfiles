@@ -21,7 +21,7 @@
 		"sounds": ["click_alveolar", "click_lateral"],
 		"threshold": {
 			">power": 10,
-			">probability": 0.9
+			">probability": 0.8
 		}
 	},
 	"tok": {
