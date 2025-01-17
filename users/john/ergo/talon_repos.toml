@@ -17,10 +17,10 @@ rev = "370d876024fb3458883d8302191d5761c9b5c59c"
 hash = "03fqzih6nc0kqz3w0zh47mxrd73035z7vj68b25291gp82ph5hzn"
 
 [[talon_repos]]
-owner = "chaosparrot"
+owner = "ProfDoof"
 repo = "talon_hud"
-rev = "a2d569e8a7152a518940bb3ee25bb1f2a20d1f9e"
-hash = "1jqjszfqrp0gan722fxg9kzqh46cn8vzqjpjra3b9bk8gbn4mvnb"
+rev = "24927057307694911c6cc3b04483d1e6f728d891"
+hash = "0dw2indipjmczksb2sb33f5byb7958qk2qb1hhnv0iasy6nlk2v4"
 
 [[talon_repos]]
 owner = "ProfDoof"
