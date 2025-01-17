@@ -17,6 +17,7 @@ let
 
   extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
+    G_MESSAGES_DEBUG = "all";
   };
 in
 {
@@ -155,6 +156,20 @@ in
   #       </monitors>
   #     '';
   programs.light.enable = true;
+  systemd.user.services.talon = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "default.target" ];
+    description = "Talon User Service";
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.talon}/bin/talon";
+        Restart = "always";
+        RestartSec = "30";
+    };
+  };
+
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
