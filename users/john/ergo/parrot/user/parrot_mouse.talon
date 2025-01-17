@@ -1,5 +1,6 @@
 tag: user.parrot_mouse
 -
+tag(): user.mouse_cursor_commands_enable
 
 parrot(tik):    
 	# close zoom if open
