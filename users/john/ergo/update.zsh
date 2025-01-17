@@ -19,7 +19,8 @@ REPOS=(
     'david-tejada' 'rango-talon'
     'cursorless-dev' 'cursorless-talon'
     # 'chaosparrot' 'talon_hud'
-    'ProfDoof' 'talon_hud'
+    # suppressing talon_hud until it seems to be a better state
+    # 'ProfDoof' 'talon_hud'
     'ProfDoof' 'speak-the-spire-talon'
 )
 
