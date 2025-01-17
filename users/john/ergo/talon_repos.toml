@@ -1,8 +1,8 @@
 [[talon_repos]]
 owner = "talonhub"
 repo = "community"
-rev = "2100ebc4e2e572e42a2de9d2d217c2004b874098"
-hash = "0kijqgipcv9dcwnvg8br34sgp3n9kxy6r44h996pyjs3ckxfm1r0"
+rev = "cf5807dae6b963fc23cdb682a73a5b89a4250c53"
+hash = "0kaqxi4d4dpgxfg4bwh7qr76bw70vq1bmxmkcblrpwbz2q64fq1k"
 
 [[talon_repos]]
 owner = "david-tejada"
@@ -13,8 +13,8 @@ hash = "1vmbmbhssml9df8lzin1vy6wkqhdi8is3argfvmnr7yfk92n88kk"
 [[talon_repos]]
 owner = "cursorless-dev"
 repo = "cursorless-talon"
-rev = "7795f4cd902e9bcd36dc3982e5a2c0f9b5c87a0f"
-hash = "15f1fxggc0vk354m2rmpvg5ziaqj1v5vgc1zkrawlbx980hh4d32"
+rev = "370d876024fb3458883d8302191d5761c9b5c59c"
+hash = "03fqzih6nc0kqz3w0zh47mxrd73035z7vj68b25291gp82ph5hzn"
 
 [[talon_repos]]
 owner = "chaosparrot"

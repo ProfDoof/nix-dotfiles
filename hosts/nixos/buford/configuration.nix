@@ -60,6 +60,9 @@ in
   environment.variables = extraEnv;
   environment.sessionVariables = extraEnv;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "john" ];
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
