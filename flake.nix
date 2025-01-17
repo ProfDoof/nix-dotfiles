@@ -43,7 +43,7 @@
     # I use. In particular, I'd like for this to play nicely with crafting my own talon files but also pull down community talon
     # files.
     talon-nix = {
-      url = "github:ProfDoof/talon-nix/add_beta_support";
+      url = "github:ProfDoof/talon-nix/no_desktop_file";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
