@@ -18,7 +18,8 @@ REPOS=(
     'talonhub' 'community'
     'david-tejada' 'rango-talon'
     'cursorless-dev' 'cursorless-talon'
-    'chaosparrot' 'talon_hud'
+    # 'chaosparrot' 'talon_hud'
+    'ProfDoof' 'talon_hud'
     'ProfDoof' 'speak-the-spire-talon'
 )
 
