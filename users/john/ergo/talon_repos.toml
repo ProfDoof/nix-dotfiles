@@ -18,12 +18,6 @@ hash = "03fqzih6nc0kqz3w0zh47mxrd73035z7vj68b25291gp82ph5hzn"
 
 [[talon_repos]]
 owner = "ProfDoof"
-repo = "talon_hud"
-rev = "24927057307694911c6cc3b04483d1e6f728d891"
-hash = "0dw2indipjmczksb2sb33f5byb7958qk2qb1hhnv0iasy6nlk2v4"
-
-[[talon_repos]]
-owner = "ProfDoof"
 repo = "speak-the-spire-talon"
 rev = "dd3ede06fa736efb00ddf5fe9fded7d19a9e094d"
 hash = "0caznzhc7fp3a6a6d92x3r2pmzlybdrp8bqrbxqh374ji37dfvf1"
