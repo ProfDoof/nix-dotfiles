@@ -17,7 +17,7 @@ let
 
   extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
-    G_MESSAGES_DEBUG = "all";
+    # G_MESSAGES_DEBUG = "all";
   };
 in
 {

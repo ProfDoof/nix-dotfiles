@@ -5,7 +5,7 @@ tag(): user.mouse_cursor_commands_enable
 parrot(tik):    
 	# close zoom if open
     tracking.zoom_cancel()
-    mouse_click(0)
+    user.parrot_mouse_click(0)
     # close the mouse grid if open
     user.grid_close()
     # End any open drags
@@ -15,6 +15,6 @@ parrot(tik):
 parrot(tok):    
 	# close zoom if open
     tracking.zoom_cancel()
-    mouse_click(1)
+    user.parrot_mouse_click(1)
     # close the mouse grid if open
     user.grid_close()

@@ -1,4 +1,4 @@
-from talon import Module, Context, actions
+from talon import Module, Context, actions, ctrl
 
 mod = Module()
 
@@ -14,3 +14,7 @@ class MouseActions:
             ctx.tags = ["user.parrot_mouse"]
         else:
             ctx.tags = []
+
+    def parrot_mouse_click(button: int):
+        """Clicks the mouse"""
+        ctrl.mouse_click(button=button, hold=16000)
