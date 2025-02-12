@@ -286,7 +286,6 @@ in
       discord
       glxinfo
       bitwarden-desktop
-      bitwarden-cli
       gnomeExtensions.appindicator
 
       # Gaming
