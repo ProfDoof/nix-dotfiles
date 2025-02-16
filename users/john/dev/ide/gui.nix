@@ -28,7 +28,7 @@
           pokey.parse-tree
           astro-build.astro-vscode
           vadimcn.vscode-lldb
-          MarlinFirmware.auto-build
+          marlinfirmware.auto-build
           platformio.platformio-ide
         ])
         ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace-release; [
