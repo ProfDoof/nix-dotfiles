@@ -13,6 +13,7 @@
         ])
         ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
           ms-python.python
+          ms-vscode.cpptools
           redhat.java
           mkhl.direnv
           jnoortheen.nix-ide
