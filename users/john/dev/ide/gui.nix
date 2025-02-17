@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     nil
+    python3Full
   ];
   programs = {
     vscode = {
@@ -10,10 +11,10 @@
       extensions =
         (with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer-nightly
+          ms-vscode.cpptools
         ])
         ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
           ms-python.python
-          ms-vscode.cpptools
           redhat.java
           mkhl.direnv
           jnoortheen.nix-ide

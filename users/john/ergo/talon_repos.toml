@@ -1,8 +1,8 @@
 [[talon_repos]]
 owner = "talonhub"
 repo = "community"
-rev = "1398c84389b6fb9e7b3fb7744545bfa97f14d133"
-hash = "0j89c99asaz367vppcjlwxhhgp1sbys7hy6lq4lv898nzl9j42a6"
+rev = "5ae1aac5ea4992e5c41b479907ab46b9b811b8df"
+hash = "1hzw1w9cfyn07fynvmcvvl51z6j4kmb7ngx8va1n8mwn22wpbpav"
 
 [[talon_repos]]
 owner = "david-tejada"
