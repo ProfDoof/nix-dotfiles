@@ -11,7 +11,7 @@
       extensions =
         (with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer-nightly
-          ms-vscode.cpptools
+          # ms-vscode.cpptools
         ])
         ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
           ms-python.python
