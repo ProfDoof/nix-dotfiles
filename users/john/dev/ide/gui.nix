@@ -7,8 +7,8 @@
   programs = {
     vscode = {
       enable = true;
-      mutableExtensionsDir = false;
-      profiles.default.extensions =
+      mutableExtensionsDir = true;
+      extensions =
         (with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer-nightly
           # ms-vscode.cpptools
