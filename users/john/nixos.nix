@@ -42,5 +42,8 @@
     envExtra = "export XDG_DATA_HOME=\"/home/john/.local/share\"";
   };
 
-  services.xembed-sni-proxy.enable = true;
+  services.xembed-sni-proxy = {
+    enable = true;
+    package = pkgs.kdePackages.plasma-workspace;
+  };
 }
