@@ -45,5 +45,6 @@
   services.xembed-sni-proxy = {
     enable = true;
     package = pkgs.kdePackages.plasma-workspace;
+    
   };
 }
