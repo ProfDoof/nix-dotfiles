@@ -1,14 +1,14 @@
 [[talon_repos]]
 owner = "talonhub"
 repo = "community"
-rev = "8ab51a600b71b2b5656f59df8b93182507706ecd"
-hash = "0vk7kxvzwvvczy2z5p3rmy7lmxn6nbzghbxwq1isdmk238wzpzj7"
+rev = "c8be8b87ab32eb48747cc7edf00c14fb06679afe"
+hash = "167w3xymkb7fr2wxd6by3gd45rd8w6w04mal7k4qzz9widiapd5l"
 
 [[talon_repos]]
 owner = "david-tejada"
 repo = "rango-talon"
-rev = "d05ad04c6a47d1c81df132af39546bd481459d70"
-hash = "1jwikn1sw589j32z039wymshysl94g8iy11nn2wm1nzq5mpjy3xq"
+rev = "a3a1a6c664a0bb387b3ce444e08830b557f15fb6"
+hash = "11d4sfw5ycnyma3piddpjl9kfvhsfvyk7d61bspf280a68h8bxpf"
 
 [[talon_repos]]
 owner = "cursorless-dev"
