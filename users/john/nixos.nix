@@ -34,6 +34,7 @@
     hunspell
     hunspellDicts.uk_UA
     hunspellDicts.th_TH
+    bitwarden-desktop
   ];
 
   programs.zsh = {

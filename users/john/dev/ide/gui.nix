@@ -32,6 +32,7 @@
           vadimcn.vscode-lldb
           marlinfirmware.auto-build
           platformio.platformio-ide
+          PaulSchaaf.talon-filetree
         ])
         ++ (with (pkgs.forVSCodeVersion pkgs.vscode.version).vscode-marketplace-release; [
           github.copilot
