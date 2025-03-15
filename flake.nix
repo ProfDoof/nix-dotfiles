@@ -117,6 +117,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
           home-manager.users.john.imports = [
+            dotlib.modules.mutableFiles
             ./users/john/darwin.nix
             ./private/users/john/darwin.nix
           ];
@@ -141,6 +142,7 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.john.imports = [
+            dotlib.modules.mutableFiles
             ./users/john/nixos.nix
             ./private/users/john/nixos.nix
           ];
