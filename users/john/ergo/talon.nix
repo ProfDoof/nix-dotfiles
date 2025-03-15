@@ -16,6 +16,9 @@ let
 
 in
 {
+  # home.mutableFile = {
+
+  # };
   home.file = lib.listToAttrs (lib.map genTarget talon_repos) // {
     ".talon/user/gamemode" = {
       source = ./gamemode;
