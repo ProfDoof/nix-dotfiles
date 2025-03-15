@@ -4,7 +4,10 @@ let
   cfg = config.home.mutableFile;
 
   runtimeInputs =
-    lib.makeBinPath (with pkgs; [ coreutils archiver curl git gopass ]);
+    lib.makeBinPath (with pkgs; [ 
+      coreutils 
+      # archiver 
+      curl git gopass ]);
 
   # An attribute set to be used to get the fetching script.
   fetchScript = _: value:
@@ -19,20 +22,20 @@ let
       fetch = ''
         [ -e ${path} ] || curl ${extraArgs} ${url} --output ${path}"
       '';
-      archive = let
-        extractScript = if (value.extractPath == null) then
-          ''arc unarchive "/tmp/$filename" ${path}''
-        else
-          ''
-            arc extract "/tmp/$filename" ${
-              lib.escapeShellArg value.extractPath
-            } ${path}'';
-      in ''
-        [ -e ${path} ] || {
-          filename=$(curl ${extraArgs} --output-dir /tmp --silent --show-error --write-out '%{filename_effective}' --remote-name --remote-header-name --location ${url})
-          ${extractScript}
-        }
-      '';
+      # archive = let
+      #   extractScript = if (value.extractPath == null) then
+      #     ''arc unarchive "/tmp/$filename" ${path}''
+      #   else
+      #     ''
+      #       arc extract "/tmp/$filename" ${
+      #         lib.escapeShellArg value.extractPath
+      #       } ${path}'';
+      # in ''
+      #   [ -e ${path} ] || {
+      #     filename=$(curl ${extraArgs} --output-dir /tmp --silent --show-error --write-out '%{filename_effective}' --remote-name --remote-header-name --location ${url})
+      #     ${extractScript}
+      #   }
+      # '';
       gopass = ''
         [ -e ${path} ] || gopass clone ${extraArgs} ${url} --path ${path} ${extraArgs}
       '';
@@ -93,8 +96,6 @@ let
 
             - For `fetch`, the file will be fetched with {command}`curl`.
             - For `git`, it will be fetched with {command}`git clone`.
-            - For `archive`, the file will be fetched with {command}`curl` and
-            extracted before putting the file.
             - For `gopass`, the file will be cloned with {command}`gopass`.
             - For `custom`, the file will be passed with a user-given command.
             The `extraArgs` option is now assumed to be a list of a command and
@@ -104,6 +105,8 @@ let
 
             The default type is `fetch`.
           '';
+          # - For `archive`, the file will be fetched with {command}`curl` and
+          # extracted before putting the file.
           default = "fetch";
           example = "git";
         };
@@ -148,10 +151,10 @@ in {
         type = "git";
       };
 
-      "library/projects/keys" = {
-        url = "https://example.com/file.zip";
-        type = "archive";
-      };
+      # "library/projects/keys" = {
+      #   url = "https://example.com/file.zip";
+      #   type = "archive";
+      # };
     };
   };
 
