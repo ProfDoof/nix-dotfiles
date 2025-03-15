@@ -15,6 +15,7 @@ let
     # suppressing talon_hud until it seems to be a better state
     # ProfDoof talon_hud
     "ProfDoof/speak-the-spire-talon"
+    "paul-schaaf/talon-filetree-commands"
   ];
 
 in
