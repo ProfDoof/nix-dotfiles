@@ -1,25 +1,26 @@
 { pkgs, lib, ... }:
 let
-  genTarget = target: {
-    name = ".talon/user/${target.repo}";
+  genGitTarget = target: {
+    name = ".talon/user/${target}";
     value = {
-      source = pkgs.fetchFromGitHub {
-        owner = target.owner;
-        repo = target.repo;
-        rev = target.rev;
-        sha256 = target.hash;
-      };
-      recursive = true;
+      url = "https://github.com/${target}.git";
+      type = "git";
     };
   };
-  talon_repos = (lib.importTOML ./talon_repos.toml).talon_repos;
+  talon_repos = [
+    "talonhub/community"
+    "david-tejada/rango-talon"
+    "cursorless-dev/cursorless-talon"
+    # chaosparrot talon_hud
+    # suppressing talon_hud until it seems to be a better state
+    # ProfDoof talon_hud
+    "ProfDoof/speak-the-spire-talon"
+  ];
 
 in
 {
-  # home.mutableFile = {
-
-  # };
-  home.file = lib.listToAttrs (lib.map genTarget talon_repos) // {
+  home.mutableFile = lib.listToAttrs (lib.map genTarget talon_repos);
+  home.file = {
     ".talon/user/gamemode" = {
       source = ./gamemode;
       recursive = true;
