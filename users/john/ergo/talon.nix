@@ -15,6 +15,7 @@ let
     # suppressing talon_hud until it seems to be a better state
     # ProfDoof talon_hud
     "ProfDoof/speak-the-spire-talon"
+    "ProfDoof/talon-files"
     "paul-schaaf/talon-filetree-commands"
   ];
 
@@ -22,28 +23,8 @@ in
 {
   home.mutableFile = lib.listToAttrs (lib.map genGitTarget talon_repos);
   home.file = {
-    ".talon/user/gamemode" = {
-      source = ./gamemode;
-      recursive = true;
-    };
-    ".talon/user/games" = {
-      source = ./games;
-      recursive = true;
-    };
     ".talon/parrot" = {
-      source = ./parrot/talon;
-      recursive = true;
-    };
-    ".talon/user/parrot" = {
-      source = ./parrot/user;
-      recursive = true;
-    };
-    ".talon/user/override" = {
-      source = ./override;
-      recursive = true;
-    };
-    ".talon/user/sleep" = {
-      source = ./sleep;
+      source = ./talon-parrot-model;
       recursive = true;
     };
   };
